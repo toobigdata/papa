@@ -1,0 +1,459 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+}
+
+body#popup {
+    width: 300px;
+}
+
+.box {
+    display: block;
+    background: #fff;
+    padding: 10px 0;
+    line-height: 20px;
+    font-size: 14px;
+    overflow: hidden;
+    white-space:nowrap;
+}
+
+.metric {
+    margin: 2px;
+    display: block;
+    background: #fff;
+    color: #4C6381;
+    padding: 2px 0;
+    line-height: 20px;
+    font-size: 14px;
+    overflow: hidden;
+    white-space:nowrap;
+}
+
+#data-primary {
+  display: block;
+  background: #fff !important;
+  border-bottom: 1px solid #ccc !important;
+  text-align: center;
+}
+
+#data-primary .metric {
+  margin: 0;
+  width: 149px;
+  float:left;
+  padding: 10px 0;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.read-box {
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.like-box {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.comment-box {
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.reward-box {
+  border-bottom: 1px solid #ccc;
+}
+
+#data-secondary {
+  border-top: 1px solid #ccc;
+  width: 100%;
+  background: #fff;
+  text-align: center;
+}
+
+#data-secondary .metric {
+  width: 33.3%;
+  float:left;
+  color: #999;
+  border: 0;
+  margin: 0;
+  padding: 5px 0;
+  font-size: 10px;
+  background: #fff;
+}
+
+.quarter {
+    width: 20%;
+    float: left;
+    text-align: center;
+    background: #aaa;
+    color: #fff;
+}
+
+.full {
+    margin-top: 2px;
+    width: 100%;
+    text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: #4C6381;
+}
+
+a:visited {
+  text-decoration: none;
+  color: gray;
+}
+
+h1#title {
+  padding: 10px;
+  color: #fff;
+  background: #4C6381;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#author {
+  padding-bottom: 10px;
+}
+
+#author a {
+  color: #999;
+}
+
+.hidden {
+  display: none;
+}
+
+#chart {
+  float: left;
+  background:#fff !important;
+  width: 300px; 
+  height: 274px;
+  overflow: hidden;
+}
+
+.spin {
+    margin: 73px 86px;
+    width: 128px;
+    height: 128px;
+    background-image: url('../images/icon128.png');
+    -webkit-animation-name: spin;
+    -webkit-animation-duration: 4000ms;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: spin;
+    -moz-animation-duration: 4000ms;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: spin;
+    -ms-animation-duration: 4000ms;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: linear;
+    
+    animation-name: spin;
+    animation-duration: 4000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@-ms-keyframes spin {
+    from { -ms-transform: rotate(0deg); }
+    to { -ms-transform: rotate(360deg); }
+}
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+table {
+//  padding: 10px;
+  color: #666;
+}
+
+.trend-table {
+  width: 100%;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.shortcuts {
+  padding: 0px 20px 10px 20px;
+  text-align: left;
+}
+
+.shortcuts a.btn {
+  display: inline-block;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 2px 5px;
+  background: #44b549;
+  color: #fff;
+}
+
+a:focus {
+  outline: none;
+}
+
+#alert {
+  padding: 10px;
+  background: #FBBC05;
+  color: #fff;
+}
+
+body.page-history {
+  text-align: left;
+}
+
+.page-history #articles li {
+  list-style-type: none;
+  line-height: 2em;
+}
+
+.page-history a {
+  color: #333;
+}
+
+.page-history a:visited {
+  color: #eee;
+}
+
+header {
+  display: block;
+  padding: 10px;
+  height: 30px;
+  background: #4C6381;
+}
+
+header h1 {
+  color: #fff;
+  float: left;
+  overflow: hidden;
+}
+
+header ul {
+  margin-left: 20px;
+  float: left;
+}
+
+header ul li {
+  list-style-type: none;
+  float: left;
+  padding: 6px;
+}
+
+header ul li a {
+  color: #eee;
+}
+
+header ul li a.active, header ul li a.active:visited {
+  color: #eee;
+}
+
+header ul li a:visited {
+  color: #fff;
+}
+
+.help {
+  padding: 0 20px;
+  background: #eee;
+  overflow: hidden;
+}
+
+.help ul li {
+  padding: 15px 0;
+}
+
+.data-area {
+  padding: 20px;
+}
+
+.option-area {
+  padding: 20px;
+  display: none;
+  background: #eee;
+}
+
+footer {
+  border-top: 1px solid #ccc;
+  padding: 20px;
+}
+
+#helpframe {
+  width: 100%;
+  min-height: 600px;
+  border: 0;
+}
+
+.btn-icon {
+  width: 12px;
+  height: 12px;
+  margin-bottom: -1px;
+}
+
+#popup a.btn1 {
+  margin: 0;
+  color: #999;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  padding: 5px;
+}
+
+#data-tab {
+  border-top: 1px solid #ccc;
+}
+
+#chart {
+  min-height: 274px;
+  overflow: hidden;
+}
+
+#trends {
+  min-height: 274px;
+  overflow: hidden;
+}
+
+#show-chart.active, #show-trend.active {
+  background: #efefef;
+}
+
+#show-chart {
+  border-right: 0 !important;
+}
+
+#show-trend {
+  margin-left: -5px !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+
+#trends td {
+  padding: 2px 0;
+  border-bottom: 1px solid #ccc !important;
+}
+
+#btn-box {
+  position: fixed;
+  top: 84px;
+  right: 5px;
+  z-index: 999;
+}
+
+.right {
+  float: right;
+}
+
+input#historyMax {
+  width: 30px;
+  margin-left: 10px;
+}
+
+.option-box {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #13840d;
+}
+
+.danger-area {
+  padding: 20px 10px;
+  border: 1px solid #f00;
+}
+
+p.title {
+  margin: 10px 0 5px 0;
+  color: #4C6381;
+  font-weight: bold;
+}
+
+a#show-options {
+  float: right;
+  cursor: pointer;
+}
+
+a#show-options img {
+  width: 26px;
+  height: 26px;
+}
+
+h2 {
+  font-size: 2em;
+  color: #4C6381;
+  margin: 15px 0 15px 0;
+}
+
+h3 {
+  font-size: 1.5em;
+  color: #4C6381;
+  margin: 15px 0 15px 0;
+}
+
+ul {
+}
+
+ul li {
+  list-style-type: none;
+  float: left;
+  margin-right: 1em;
+}
+
+.help li a.active {
+  background: #4C6381;
+  padding: 5px;
+  color: #fff;
+  border-radius: 5px;
+}
+
+a#clearStorage {
+  display: block;
+  margin: 10px;
+  background: red;
+  padding: 5px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+#info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  z-index: 9999;
+  overflow: hidden;
+  background: #4C6381;
+}
+
+.help-page {
+  margin: 40px;
+}
+
+.help-page p {
+  line-height: 1.5em;
+  padding-bottom: 15px;
+}
+
+
+.help-page ol {
+  line-height: 2em;
+  margin: 0;
+  padding-left: 1em;
+}
+

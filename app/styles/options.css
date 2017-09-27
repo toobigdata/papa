@@ -1,0 +1,11 @@
+#main {
+  padding: 40px 100px;
+}
+
+#show-options a {
+  color: #fff !important;
+}
+
+#show-options a:visited {
+  color: #fff !important;
+}

@@ -1,0 +1,22 @@
+#jianzhi_sidebar {
+  position: fixed;
+  right: 0;
+  top: 100px;
+  background: rgb(76, 99, 129) !important;
+  border-top-left-radius: 15px !important;
+  border-bottom-left-radius: 15px !important;
+  z-index: 999;
+}
+
+#jianzhi_sidebar a.btn {
+  display: block;
+  padding: 10px 15px;
+  font-size: 14px;
+  line-height: inherit !important;
+  color: #fff;
+  text-decoration: none;
+  background: #4C6381;
+  border: 0 !important;
+  border-top-left-radius: 15px !important;
+  border-bottom-left-radius: 15px !important;
+}

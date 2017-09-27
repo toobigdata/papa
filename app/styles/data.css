@@ -1,0 +1,34 @@
+table {
+  padding: 10px;
+}
+
+table thead {
+  font-weight: bold;
+}
+
+table.dataTable.no-footer {
+  border-bottom: 0 !important;
+}
+
+table.dataTable thead th, table.dataTable thead td {
+  border-bottom: 1px solid #a2aec7 !important;
+}
+
+tr {
+  height: 2em;
+}
+
+td.url {
+  max-width: 20px;
+  overflow: hidden;
+  white-space:nowrap;
+}
+
+
+#log {
+  text-wrap: normal;
+}
+
+#basicData, #detailData {
+  margin: 5px 25px;
+}

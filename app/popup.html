@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- build:css styles/popup-vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css styles/main.css -->
+    <link href="styles/main.css" rel="stylesheet">
+    <!-- endbuild -->
+
+    <!-- build:js scripts/lib/jquery.js -->
+    <script src="scripts/lib/jquery.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js scripts/util.js -->
+    <script src="scripts/util.js"></script>
+    <!-- endbuild -->
+    
+    <!-- build:js scripts/popup.js -->
+    <script src="scripts/popup.js"></script>
+    <!-- endbuild -->
+  </head>
+  <body id="popup">
+    <div id="main">
+
+      <h1 id="title">简直数据助手
+        <a id="show-options" href="#" style="color: #fff">[设置]</a><span id="version"></span>
+      </h1>
+      <div id="alert" class="hidden"></div>
+
+      <div class="shortcuts">
+        <p class="title">快捷入口</p>
+        <a class="btn" href="mydata.html" id="mydata" target="_blank" title="查看我的最近数据">
+          我的数据
+        </a>
+        <a class="btn" href="bookmarks.html" id="help" target="_blank" title="使用说明书">
+          我的书签
+        </a>
+        <a class="btn" href="help.html" id="help" target="_blank" title="使用说明书">
+          使用说明
+        </a>
+      </div>
+
+      <div class="shortcuts">
+        <p class="title">微信功能</p>
+        <a class="btn" href="#" id="closeAllWxTabs" title="一键关闭所有微信文章页面">
+          清理页面
+        </a>
+        <a class="btn" id="history" title="只有通过正确的微信客户端打开微信文章页面时才可点击，详见使用说明" target="_blank">
+          文章回溯
+        </a>
+      </div>
+
+      <div class="option-area">
+        <p class="title">设置</p>
+        <div class="option-box">
+          <p>TooBigData 平台绑定码（<a href="help.html" target="_blank">我要订阅</a>）</p>
+          <input style="width:100%" placeholder="即订阅会员数据的手机号" type="text" id="phone" checked />
+        </div>
+        <div class="option-box">
+          <p>微信设置</p>
+          <input type="checkbox" id="input_wechatAutoClose" /> <label id="autoCloseLabel">定时自动关闭微信文章</label>
+          <br>
+          <p>
+          <label id="maxLabel">回采页数</label>
+          <input id="input_wechatHistoryMax" type="range" min="10" max="100" step="10" />
+          <span id="input_wechatHistoryMax_show"></span>
+          </p>
+
+        </div>
+
+        <input type="button" id="save" value="保存" />
+        <span id="status"></span>
+
+        <div class="option-box danger-area" style="display: none;"> 
+          <p>危险区域</p>
+          <br>
+          <input type="button" id="clearstorage" value="清除本地数据" />
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- build:js scripts/popup-vendor.js -->
+    <!-- bower:js -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js scripts/lib/jquery.js -->
+    <script src="scripts/lib/jquery.js"></script>
+    <!-- endbuild -->
+    <!-- build:js scripts/options.js -->
+    <script src="scripts/options.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>

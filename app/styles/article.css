@@ -1,0 +1,40 @@
+body {
+  padding-top: 40px;
+}
+
+#info {
+  position: absolute;
+  padding: 5px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  overflow: hidden;
+  background: #4C6381;
+  color: #fff;
+  text-align: center;
+}
+
+#basic, #error, #data, #footer {
+  padding: 0 15px;
+  border-top: 1px solid #eee;
+}
+
+.title {
+  padding-left: 20px;
+  color: #08C678;
+  background: url('http://7o4zm1.com1.z0.glb.clouddn.com/icon16.png') no-repeat 0 4px;
+}
+
+.download-link {
+  display: block;
+  padding-left: 25px;
+  background: #ebebeb url('http://7o4zm1.com1.z0.glb.clouddn.com/icon16.png') no-repeat 5px 5px;
+  color: #333;
+}
+
+
+.audio_area {
+  margin-top: 0 !important;
+  border-top: 0 !important;
+}

@@ -1,0 +1,53 @@
+{
+  "name": "EasyCrawler",
+  "short_name": "EasyCrawler",
+  "version": "0.8.0",
+  "manifest_version": 2,
+  "description": "浏览器数据爬虫插件，为不想花钱买数据的你设计",
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "background": {
+    "scripts": [
+      "scripts/lib/jquery.js",
+      "scripts/util.js",
+      "scripts/config.js",
+      "scripts/ua.js",
+      "scripts/background.js"
+    ],
+    "persistent": true
+  },
+  "permissions": [
+    "<all_urls>","webRequest","webRequestBlocking","storage", "unlimitedStorage" ,"tabs", "activeTab", "bookmarks"
+  ],
+  "content_scripts": [
+      {
+          "matches": ["<all_urls>"],
+          "js": ["scripts/lib/jquery.js", "scripts/util.js", "scripts/content_start.js"],
+          "css": ["styles/sidebar.css"],
+          "run_at" : "document_end",
+          "all_frames": false
+      },
+      {
+          "matches": ["*://mp.weixin.qq.com/s?*pass_ticket*", "*://mp.weixin.qq.com/mp/*pass_ticket*"],
+          "js": ["scripts/spoofer_cs.js", "scripts/util.js"],
+          "css": ["styles/article.css"],
+          "run_at" : "document_start",
+          "all_frames": false
+      }
+  ],
+  "browser_action": {
+    "default_icon": {
+      "19": "images/icon19.png",
+      "38": "images/icon38.png"
+    },
+    "default_title": "EasyCrawler",
+    "default_popup": "popup.html"
+  },
+  "web_accessible_resources": [
+    "scripts/spoofer_cs.js", "scripts/track/wechat.article.js"
+  ],
+  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'"
+}

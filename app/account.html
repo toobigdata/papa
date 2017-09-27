@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>微信文章回采 - 简直数据助手</title>
+    <!-- build:css styles/options-vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css styles/main.css -->
+    <link href="styles/main.css" rel="stylesheet">
+    <!-- endbuild -->
+    <!-- build:css styles/data.css -->
+    <link href="styles/data.css" rel="stylesheet">
+    <!-- endbuild -->
+  </head>
+  <body class="page-history">
+    <header>
+      <h1 class="title">简直数据助手</h1>
+      <ul>
+        <li><a href="/mydata.html">我的数据</a></li>
+        <li><a href="/help.html">使用说明</a></li>
+      </ul>
+      <ul class="right">
+        <li><a href="http://jianzhiim.com">简直数据平台</a></li>
+      </ul>
+    </header>
+    <div class="help">
+      <p style="padding: 15px;">注：<span style="color: red">回采过程中请勿关闭此页面</span> 插件会自动打开一些网页，您可以点击插件图标后【清理页面】，也可以设置为自动关闭。<br>回采页数可以在插件设置里调整。若未关注公众号，则只能回采近期文章。</p>
+    </div>
+
+    <div class="data-area">
+      <div id="log">正在拉取文章列表（第 <span id="rows">1</span> 页），请不要关闭页面<br></div>
+      <ul id="articles" style="display: none;"></ul>
+    </div>
+
+    <!-- build:js scripts/options-vendor.js -->
+    <!-- bower:js -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/lib/jquery.js -->
+    <script src="scripts/lib/jquery.js"></script>
+    <!-- endbuild -->
+    <!-- build:js scripts/util.js -->
+    <script src="scripts/util.js"></script>
+    <!-- endbuild -->
+    <!-- build:js scripts/account.js -->
+    <script src="scripts/account.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>
