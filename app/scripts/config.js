@@ -26,7 +26,7 @@ var config = {
     'dianping.shop': {
       display_name: '大众点评数据',
       url_re: ['.*www.dianping.com\/shop\/.*'],
-      head: ['时间', '店名', '电话', '人均消费', '口味评分', '环境评分', '服务评分'],
+      head: ['时间', '店名', '电话', '人均消费（元）', '口味评分', '环境评分', '服务评分'],
       field: ['ts', 'shop_name', 'tel', 'avg_price', 'taste_score', 'environment_score', 'service_score']
     },
     'lianjia.zufang': {
@@ -44,7 +44,7 @@ var config = {
     'jd.product': {
       display_name: '京东商品',
       url_re: ['.*item.jd.com\/.+\.html'],
-      head: ['时间', '房源标题', '价格', '位置'],
-      field: ['ts', 'title', 'price', 'location']
+      head: ['时间', '商品名', '价格', '评论数'],
+      field: ['ts', 'title', 'price', 'commentCount']
     }
 }

@@ -11,7 +11,9 @@
 (function() {
   'use strict';
   // Your code here...
-	crawl();
+  setTimeout(function(){
+    crawl();
+  }, 3*1000);
 
 })();
 
@@ -19,20 +21,14 @@ function crawl(){
 
   var data = {};
   data.url = location.href;
-  /*
-  data.title = document.querySelector('.article-box > h1.article-title').innerText;
-  data.author = document.querySelector('.user-card-name > a').innerText;
-  data.author_url = document.querySelector('.user-card-name > a').href;
-  data.comment_num = document.querySelector('#comment > div.c-header > em').innerText.replace(',', '');
-  data.create_time = document.querySelector('.article-sub > span:nth-last-child(1)').innerText;
-  */
+  data.title = document.querySelector('.sku-name').innerText;
+  data.price = document.querySelector('.price').innerText;
+  data.commentCount = document.querySelector('.comment-count .count').innerText;
   console.log(data);
 
-  /*
-  chrome.runtime.sendMessage({ 'msgtype': 'toutiao_article', 'content': data}, function (response) {
+  chrome.runtime.sendMessage({ 'msgtype': 'jd.product', 'content': data}, function (response) {
     //console.log(response);
   });
-  */
 
 }
 

@@ -81,30 +81,30 @@ function getWxData(r, type){
         //contentType: false,
         success: function(d) { 
           //console.log(d);
-          if(d.appmsgstat){
             var json = {};
             json.comment_data = d;
             json.meta_data = meta;
             sendtoServer(json, 'wechat.article.comment');
-          }
         }
     });
 	} else if(r && type == 'ext'){
-    $.ajax({
-        type: "POST",
-        url: r.url + "do_not",
-        data: {
-					is_only_read: 1
-				},
-        contentType: false,
-        success: function(d) { 
-          console.log(d);
-          var json = {};
-					json.ext_data = d;
-					json.meta_data = meta;
-          sendtoServer(json, 'wechat.article.ext');
-        }
-    });
+    if(d.appmsgstat){
+      $.ajax({
+          type: "POST",
+          url: r.url + "do_not",
+          data: {
+            is_only_read: 1
+          },
+          contentType: false,
+          success: function(d) { 
+            console.log(d);
+            var json = {};
+            json.ext_data = d;
+            json.meta_data = meta;
+            sendtoServer(json, 'wechat.article.ext');
+          }
+      });
+    }
   } else {
 		console.log('not comment');
 	}
