@@ -43,5 +43,11 @@ var config = {
       url_re: ['.*5i5j.com\/rent\/.+'],
       head: ['时间', '房源标题', '价格', '位置'],
       field: ['ts', 'title', 'price', 'location']
+    },
+    'jd.product': {
+      display_name: '京东商品',
+      url_re: ['.*item.jd.com\/.+\.html'],
+      head: ['时间', '房源标题', '价格', '位置'],
+      field: ['ts', 'title', 'price', 'location']
     }
 }
