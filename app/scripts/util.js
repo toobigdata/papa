@@ -80,12 +80,13 @@ function getWxData(r, type){
         //data: r.requestBody.formData,
         //contentType: false,
         success: function(d) { 
-          console.log(d);
-				
-          var json = {};
-					json.comment_data = d;
-					json.meta_data = meta;
-          sendtoServer(json, 'wechat.article.comment');
+          //console.log(d);
+          if(d.appmsgstat){
+            var json = {};
+            json.comment_data = d;
+            json.meta_data = meta;
+            sendtoServer(json, 'wechat.article.comment');
+          }
         }
     });
 	} else if(r && type == 'ext'){

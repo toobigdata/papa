@@ -1,12 +1,8 @@
 'use strict';
 
 $(function(){
-	var source = getQuery(location.href, 'source') || 'wechat.article';
-  //console.log(source);
-  //renderDetail(source);
+	var source = getQuery(location.href, 'source') || 'wechat.article.content';
   for(var i in config){
-    //console.log(i);
-    //console.log(config[i].display_name);
     var li = '<li><a href="/mydata.html?source=' + i + '" id="' + i + '">' + config[i].display_name + '</a></li>';
     document.querySelector('#source').innerHTML += li;
   }

@@ -1,12 +1,9 @@
 var config = {
-    'wechat.article': {
+    'wechat.article.content': {
       display_name: '微信文章数据',
-      url_re: ['.*mp.weixin.qq.com\/[s|mp\/]+.*pass_ticket.*'],
-      head: ['时间', '公众号', '文章标题', '阅读数', '点赞数', '评论数', '打赏数'],
-      field: ['ts', 'author', 'title', 'readCount', 'likeCount', 'commentCount', 'rewardCount'],
-      detail_selector: 'appmsg_comment.elected_comment',
-      detail_head: ['作者', '评论', '点赞数'],
-      detail_field: ['nick_name', 'content', 'like_num'],
+      url_re: ['.*mp.weixin.qq.com\/[s|mp\/]+.*'],
+      head: ['时间', '公众号', '文章标题', '图片数', '视频数', '音乐数', '语音数', '投票数', '内链数'],
+      field: ['ts', 'author', 'title', 'imageCount', 'videoCount', 'musicCount', 'voiceCount', 'voteCount', 'linkCount']
     },
     'taobao.zhongchou': {
       display_name: '淘宝众筹数据',
