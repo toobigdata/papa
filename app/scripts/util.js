@@ -65,6 +65,50 @@ function getComments(url){
 	});
 }
 
+function getWxData(r, type){
+	var meta = {
+		biz: getQuery(r.url, '__biz'),
+		mid: getQuery(r.url, 'mid'),
+		idx: getQuery(r.url, 'idx'),
+		url: r.url
+	};
+
+  if(r && type == 'comment'){
+    $.ajax({
+        type: "GET",
+        url: r.url + "do_not",
+        //data: r.requestBody.formData,
+        //contentType: false,
+        success: function(d) { 
+          console.log(d);
+				
+          var json = {};
+					json.comment_data = d;
+					json.meta_data = meta;
+          sendtoServer(json, 'wechat.article.comment');
+        }
+    });
+	} else if(r && type == 'ext'){
+    $.ajax({
+        type: "POST",
+        url: r.url + "do_not",
+        data: {
+					is_only_read: 1
+				},
+        contentType: false,
+        success: function(d) { 
+          console.log(d);
+          var json = {};
+					json.ext_data = d;
+					json.meta_data = meta;
+          sendtoServer(json, 'wechat.article.ext');
+        }
+    });
+  } else {
+		console.log('not comment');
+	}
+}
+
 function sendtoServer(data, source) {
 
   var manifest = chrome.runtime.getManifest();

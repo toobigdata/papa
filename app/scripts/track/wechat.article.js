@@ -52,7 +52,7 @@ $(function () {
   a.ct = getWxVar('ct'); // 文章发布时间，Unix 时间戳（转换为 JS 时间戳时要乘 1000）
   a.source = getWxVar('source');
   a.scene = getWxVar('scene');
-  if(a.scene===null) a.scene = 6; // 从 0 改为 6
+  if(a.scene===null) a.scene = 0; // 从 0 改为 6
   a.appmsg_type = getWxVar('appmsg_type');
 
 
@@ -160,7 +160,7 @@ $(function () {
   exthr.open('POST', appmsgextUrl, false);
   exthr.setRequestHeader('Content-Type', 'application/json');
   var param = 'is_only_read=1';
-  exthr.send(param);
+  //exthr.send(param);
 
 
   var ext = JSON.parse(exthr.response);
@@ -168,7 +168,8 @@ $(function () {
 
   a.appmsg_ext = ext;
 
-  //console.log(ext);
+  console.log('ext');
+  console.log(ext);
 
 
   if (ext && ext.appmsgstat) {
@@ -193,7 +194,7 @@ $(function () {
   var commenthr = createXmlHttpRequest();
   commenthr.open('POST', appmsgcommentUrl, false);
   commenthr.setRequestHeader('Content-Type', 'application/json');
-  commenthr.send();
+  //commenthr.send();
 
   var comment = JSON.parse(commenthr.response);
 

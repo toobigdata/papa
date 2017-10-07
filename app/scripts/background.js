@@ -16,6 +16,7 @@ for(var i in config){
   }
 }
 
+
 function sendtoServer(data, source) {
 
   var manifest = chrome.runtime.getManifest();
@@ -197,6 +198,7 @@ function getSource(url) {
 }
 
 // 监听发送请求
+/*
 chrome.webRequest.onBeforeRequest.addListener(
   function(details) {
     getComments(details.url);
@@ -218,6 +220,33 @@ chrome.webRequest.onBeforeRequest.addListener(
   []
   //["blocking"]
   //["requestBody"]
+);
+*/
+
+chrome.webRequest.onBeforeRequest.addListener(
+  function(details) {
+    //getComments(details.url);
+    
+		if (details.url.endsWith("do_not")) {
+			console.log('do not modify');
+			return {redirectUrl: chrome.extension.getURL("returnjs.js")};
+		}
+
+		if(details.url.indexOf('appmsg_comment') > 0){
+			getWxData(details, 'comment');
+		} else if(details.url.indexOf('getappmsgext') > 0){
+			getWxData(details, 'ext');
+		}
+		return {redirectUrl: chrome.extension.getURL("returnjs.js")};
+  },
+  {
+    urls: [
+        "https://mp.weixin.qq.com/mp/getappmsgext?*",
+        "*://mp.weixin.qq.com/mp/appmsg_comment*"
+    ],
+    types: ["xmlhttprequest"]
+  },
+  []
 );
 
 daemon();

@@ -1,7 +1,7 @@
 {
   "name": "EasyCrawler",
   "short_name": "EasyCrawler",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "manifest_version": 2,
   "description": "浏览器数据爬虫插件，支持微信、头条、豆瓣等数据",
   "icons": {
