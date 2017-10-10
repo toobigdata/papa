@@ -88,7 +88,7 @@ function getWxData(r, type){
         }
     });
 	} else if(r && type == 'ext'){
-    if(d.appmsgstat){
+    if(r.url.indexOf('getappmsgext')>0){
       $.ajax({
           type: "POST",
           url: r.url + "do_not",
