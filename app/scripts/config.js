@@ -46,5 +46,11 @@ var config = {
       url_re: ['.*item.jd.com\/.+\.html'],
       head: ['时间', '商品名', '价格', '评论数'],
       field: ['ts', 'title', 'price', 'commentCount']
+    },
+    'amazon.com.product': {
+      display_name: '亚马逊商品',
+      url_re: ['.*www.amazon.com\/.+\/dp\/.+'],
+      head: [],
+      field: []
     }
 }
