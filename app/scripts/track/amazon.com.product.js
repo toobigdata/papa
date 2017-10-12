@@ -24,7 +24,7 @@ function crawl(){
   data.title = document.querySelector('#productTitle').innerText;
   data.review_count = document.querySelector('.totalReviewCount').innerText.replace(',','');
   data.rating = document.querySelector('.arp-rating-out-of-text').innerText.replace(' out of 5 stars','');
-  data.price = document.querySelector('.a-spacing-none .a-color-price').innerText;
+  data.price = document.querySelector('.a-spacing-none .a-color-price').innerText.replace(/\s/g, '');
   var per = document.querySelectorAll('#histogramTable .a-text-right .a-size-base');
   data.percentage = {
     '5': per[0].innerText, 

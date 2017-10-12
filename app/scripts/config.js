@@ -49,8 +49,17 @@ var config = {
     },
     'amazon.com.product': {
       display_name: '亚马逊商品',
-      url_re: ['.*www.amazon.com\/.+\/dp\/.+'],
+      url_re: ['.*www.amazon.com\/.+\/dp\/.+', '.*www.amazon.com\/gp\/product\/.*'],
+      head: [],
+      field: []
+    },
+    'amazon.com.product.review': {
+      display_name: '亚马逊商品评论',
+      url_re: ['.*www.amazon.com\/.+\/product-reviews\/.+'],
       head: [],
       field: []
     }
 }
+
+// TOTO
+// asin 解析会有问题
