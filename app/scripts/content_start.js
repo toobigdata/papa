@@ -3,6 +3,17 @@
   chrome.runtime.sendMessage({ 'msgtype': 'getScript', 'url': location.href}, function (response) {
     //console.log(response);
     if(response === 'appendSidebar'){
+
+			Push.create("EasyCrawler 检测到数据", {
+					body: "How's it hangin'?",
+					icon: '/icon.png',
+					timeout: 4000,
+					onClick: function () {
+							window.focus();
+							this.close();
+					}
+			});
+
       var sidebar = document.createElement('div');
       sidebar.id = 'jianzhi_sidebar';
       sidebar.innerHTML = '<a class="btn" href="#" id="minuteReload" title=""> 分钟监测 </a>';

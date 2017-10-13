@@ -58,8 +58,7 @@ function crawl(){
 
   console.log(data);
 
-  //chrome.runtime.sendMessage({ 'msgtype': 'amazon.com.product', 'content': data}, function (response) {
-  chrome.runtime.sendMessage({ 'msgtype': 'test', 'content': data}, function (response) {
+  chrome.runtime.sendMessage({ 'msgtype': 'amazon.com.product.review', 'content': data}, function (response) {
     console.log(response);
   });
 
@@ -67,8 +66,10 @@ function crawl(){
 
 function crawlNextPage(){
 	var btn = document.querySelector('li.a-last a');
-	btn.click();
-	setTimeout(function(){
-		crawl();
-	}, 3*1000);
+	if(btn){
+    btn.click();
+    setTimeout(function(){
+      crawl();
+    }, 3*1000);
+  }
 }
