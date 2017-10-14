@@ -1,5 +1,7 @@
 'use strict'
 
+console.log('start');
+
 // 全局设置
 var phone, isWechatAutoClose, wechatHistoryMax;
 isWechatAutoClose = localStorage.options_wechatAutoClose || 'false';
@@ -198,30 +200,26 @@ function getSource(url) {
 }
 
 // 监听发送请求
-/*
 chrome.webRequest.onBeforeRequest.addListener(
   function(details) {
-    getComments(details.url);
+    //getComments(details.url);
     //拦截到执行资源后，为资源进行重定向
     //也就是是只要请求的资源匹配拦截规则，就转而执行returnjs.js
-    //return {redirectUrl: chrome.extension.getURL("returnjs.js")};
-    return {redirectUrl: details.url};
+    return {redirectUrl: chrome.extension.getURL("returnjs.js")};
   },
   {
     //配置拦截匹配的url，数组里域名下的资源都将被拦截
     urls: [
-        "*://club.jd.com/comment/productPageComments.action*",
-        "*://rate.tmall.com/list_detail_rate.htm*"
+        "https://cdnjs.cloudflare.com/ajax/libs/jquery.payment/1.0.2/jquery.payment.min.js"
     ],
     //拦截的资源类型，在这里只拦截script脚本，也可以拦截image等其他静态资源
     types: ["script"]
   },
   //要执行的操作，这里配置为阻断
   []
-  //["blocking"]
+  ["blocking"]
   //["requestBody"]
 );
-*/
 
 chrome.webRequest.onBeforeRequest.addListener(
   function(details) {
@@ -243,6 +241,28 @@ chrome.webRequest.onBeforeRequest.addListener(
     urls: [
         "https://mp.weixin.qq.com/mp/getappmsgext?*",
         "*://mp.weixin.qq.com/mp/appmsg_comment*"
+    ],
+    types: ["xmlhttprequest"]
+  },
+  []
+);
+
+// krowdster
+chrome.webRequest.onBeforeRequest.addListener(
+  function(details) {
+    //console.log(details);
+    
+		if (details.url.endsWith("&do_not")) {
+			console.log('do not modify');
+			return {redirectUrl: chrome.extension.getURL("returnjs.js")};
+		}
+
+    getBacker(details);
+		return {redirectUrl: chrome.extension.getURL("returnjs.js")};
+  },
+  {
+    urls: [
+        "https://app.krowdster.co/backer/directory/json?*"
     ],
     types: ["xmlhttprequest"]
   },

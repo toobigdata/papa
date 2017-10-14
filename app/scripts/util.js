@@ -65,6 +65,22 @@ function getComments(url){
 	});
 }
 
+
+function getBacker(r){
+  var source = 'krowdster.json';
+
+  $.ajax({
+      type: "GET",
+      url: r.url + "&do_not",
+      //data: r.requestBody.formData,
+      //contentType: false,
+      success: function(d) { 
+          console.log(d);
+          sendtoServer(d, source);
+      }
+  });
+}
+
 function getWxData(r, type){
 	var meta = {
 		biz: getQuery(r.url, '__biz'),

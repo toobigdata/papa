@@ -4,15 +4,6 @@
     //console.log(response);
     if(response === 'appendSidebar'){
 
-			Push.create("EasyCrawler 检测到数据", {
-					body: "How's it hangin'?",
-					icon: '/icon.png',
-					timeout: 4000,
-					onClick: function () {
-							window.focus();
-							this.close();
-					}
-			});
 
       var sidebar = document.createElement('div');
       sidebar.id = 'jianzhi_sidebar';

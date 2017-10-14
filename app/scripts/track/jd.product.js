@@ -11,6 +11,15 @@
 (function() {
   'use strict';
   // Your code here...
+  Push.create("EasyCrawler 检测到数据", {
+      body: "京东商品数据",
+      icon: 'https://raw.githubusercontent.com/toobigdata/EasyCrawler/master/app/images/logo.png',
+      timeout: 5000,
+      onClick: function () {
+          window.focus();
+          this.close();
+      }
+  });
   setTimeout(function(){
     crawl();
   }, 3*1000);

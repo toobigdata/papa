@@ -13,7 +13,7 @@
   // Your code here...
   
   Push.create("EasyCrawler 检测到数据", {
-      body: "Amazon.com 商品评论数据",
+      body: "Kickstater 评论数据",
       icon: 'https://raw.githubusercontent.com/toobigdata/EasyCrawler/master/app/images/logo.png',
       timeout: 5000,
       onClick: function () {
@@ -45,38 +45,30 @@ function crawl(){
 
   var data = {};
   data.url = location.href;
-  data.title = document.querySelector('.product-title h1 a').innerText;
-  var reviewList = Array.from(document.querySelectorAll('#cm_cr-review_list .review'));
+  data.title = document.querySelector('h2.project-profile__title a').innerText;
+  //var reviewList = Array.from(document.querySelectorAll('#cm_cr-review_list .review'));
   //console.log(reviewList);
 
-  data.review_list = reviewList.map(function(d){
-    var item = d;
-    var review = {};
-    review.id = item.id;
-    review.rating = item.querySelector('a i.review-rating').innerText.replace(' out of 5 stars', '');
-    review.title = item.querySelector('a.review-title').innerText;
-    review.author = item.querySelector('.author').innerText;
-    //review.author_fame = item.querySelector('a.c7y-badge-hall-of-fame').innerText;
-    review.date = item.querySelector('.review-date').innerText;
-    review.sku = item.querySelector('.review-data.review-format-strip').innerText;
-    review.text = item.querySelector('.review-text').innerText;
-    review.comment_num = item.querySelector('.review-comment-total').innerText;
-    if(item.querySelector('.cr-vote .review-votes')) review.vote = item.querySelector('.cr-vote .review-votes').innerText;
-    console.log(review);
-    return review;
+  var all = Array.from(document.querySelectorAll('.list-comments .comment-inner'));
+  data.comment_list = all.slice(all.length - 50, all.length).map(function(d){
+    return {
+      author_name: d.querySelector('h3 a.author').innerText,
+      author_link: d.querySelector('h3 a.author').href,
+      date: d.querySelector('.date a data').innerText,
+      content: d.querySelector('p').innerText,
+    }
   });
-
 
   console.log(data);
 
-  chrome.runtime.sendMessage({ 'msgtype': 'amazon.com.product.review', 'content': data}, function (response) {
+  chrome.runtime.sendMessage({ 'msgtype': 'kickstater.project.comment', 'content': data}, function (response) {
     console.log(response);
   });
 
 }
 
 function crawlNextPage(){
-	var btn = document.querySelector('li.a-last a');
+	var btn = document.querySelector('a.older_comments');
 	if(btn){
     btn.click();
     setTimeout(function(){
