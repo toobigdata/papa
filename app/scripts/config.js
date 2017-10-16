@@ -59,20 +59,14 @@ var config = {
       head: [],
       field: []
     },
-    'krowdster.backer': {
-      display_name: 'Hello',
-      url_re: ['.*app.krowdster.co\/backer\/directory.*'],
-      head: [],
-      field: []
-    },
     'kickstater.project.comment': {
-      display_name: 'Hello',
+      display_name: 'Kickstarter 评论',
       url_re: ['.*www.kickstarter.com\/projects\/.*\/.*\/comments.*'],
       head: [],
       field: []
     },
     'kickstater.user': {
-      display_name: 'Hello',
+      display_name: 'Kickstarter 用户',
       url_re: ['.*www.kickstarter.com\/profile\/.*\/about'],
       head: [],
       field: []

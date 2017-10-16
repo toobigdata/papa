@@ -206,6 +206,7 @@ a.btn {
   padding: 2px 5px;
   background: #4d6481;
   color: #fff;
+  cursor: pointer;
 }
 
 a:focus {
