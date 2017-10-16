@@ -456,3 +456,8 @@ a#clearStorage {
   margin: 0;
   padding-left: 1em;
 }
+
+textarea#url-input {
+  width: 100%;
+  height: 20em;
+}

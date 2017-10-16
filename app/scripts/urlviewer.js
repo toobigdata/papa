@@ -1,6 +1,6 @@
 $(function(){
   $('#submit').click(function(){
-    var links = document.querySelector('#log').value;
+    var links = document.querySelector('#url-input').value;
     var crawlQueue = links.split('\n');
     console.log(crawlQueue);
     getData(crawlQueue);
@@ -21,5 +21,5 @@ function getData(crawlQueue){
           //console.log(tab);
           //sendResponse('opened the url');
       });
-    }, 5000);
+    }, 3000);
 };
