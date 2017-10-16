@@ -51,7 +51,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
   if (message.msgtype == 'getScript') {
 
     var source = getSource(sender.url);
-    console.log(source);
+    //console.log(source);
 
     if(source !== 0){
       chrome.tabs.executeScript(tabId, {file: 'scripts/track/' + source + '.js'});
@@ -60,7 +60,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
   } else if (message.msgtype == 'minuteReload') {
 
       setInterval(function(){
-        console.log(1);
+        //console.log(1);
         chrome.tabs.reload(tabId);
       }, 50*1000);
 
@@ -137,7 +137,8 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
 
     sendtoServer(data, source);
 
-    localStorage[source] = JSON.stringify(data);
+    // 暂不保存
+    //localStorage[source] = JSON.stringify(data);
 
 
     for(var i in data){
@@ -148,7 +149,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     }
     console.log(data);
     if(data != undefined){
-      localStorage[source + '.basic'] +=  JSON.stringify(data) + ',';
+      //localStorage[source + '.basic'] +=  JSON.stringify(data) + ',';
     }
   
   }
@@ -179,6 +180,13 @@ function closeTabs(){
     });
     chrome.tabs.remove(tabIds);
   });
+  chrome.tabs.query({ 'status': 'complete', 'url': '*://www.kickstarter.com/profile/*' }, function (tabs) {
+    console.log(tabs);
+    var tabIds = $.map(tabs, function (value, index) {
+      return tabs[index].id;
+    });
+    chrome.tabs.remove(tabIds);
+  });
 }
 
 function clearStorage() {
@@ -192,7 +200,7 @@ function getSource(url) {
   for(var i in config){
     for(var j=0;j<config[i]['url_re'].length;j++){
       var re = new RegExp(config[i]['url_re'][j], 'i');
-      console.log(re);
+      //console.log(re);
       if(url.match(re)) return i;
     }
   }

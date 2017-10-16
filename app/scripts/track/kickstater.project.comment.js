@@ -8,6 +8,7 @@
 // @grant        none
 // ==/UserScript==
 
+
 (function() {
   'use strict';
   // Your code here...
@@ -32,12 +33,14 @@
   sidebar.innerHTML = '<a style="color: #fff" class="btn" href="#" id="jz_crawl" title="">Auto Crawl</a>';
   document.body.appendChild(sidebar);
   $('#jz_crawl').click(function(){
-		setInterval(function(){
-			crawlNextPage();
+		var intervalId = setInterval(function(){
+			if(crawlNextPage() < 0){
+        clearInterval(intervalId);
+        alert('done');
+      }
 		}, 5*1000);
     //alert('成功加入监测，监测期间请勿关闭页面。微信分钟级监测最多持续 2 小时。');
   });
-
 
 })();
 
@@ -45,7 +48,7 @@ function crawl(){
 
   var data = {};
   data.url = location.href;
-  data.title = document.querySelector('h2.project-profile__title a').innerText;
+  data.title = document.title;
   //var reviewList = Array.from(document.querySelectorAll('#cm_cr-review_list .review'));
   //console.log(reviewList);
 
@@ -54,7 +57,7 @@ function crawl(){
     return {
       author_name: d.querySelector('h3 a.author').innerText,
       author_link: d.querySelector('h3 a.author').href,
-      date: d.querySelector('.date a data').innerText,
+      comment_at: d.querySelector('.date a data').getAttribute('data-value'),
       content: d.querySelector('p').innerText,
     }
   });
@@ -69,10 +72,13 @@ function crawl(){
 
 function crawlNextPage(){
 	var btn = document.querySelector('a.older_comments');
-	if(btn){
+	if(btn != null && btn.style.display !== 'none'){
     btn.click();
     setTimeout(function(){
       crawl();
+      return 1;
     }, 1*1000);
+  } else {
+    return -1;
   }
 }
