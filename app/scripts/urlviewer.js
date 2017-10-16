@@ -5,6 +5,16 @@ $(function(){
     console.log(crawlQueue);
     getData(crawlQueue);
   });
+
+
+  var wait = 5;
+  document.getElementById('input_wait').value = wait;
+  document.getElementById('input_wait_show').innerText = wait;
+  $('#input_wait').change(function(){
+    wait = document.getElementById('input_wait').value;
+    document.getElementById('input_wait_show').innerText = wait;
+  });
+
 });
 
 function getData(crawlQueue){

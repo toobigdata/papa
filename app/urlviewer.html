@@ -14,7 +14,7 @@
     <link href="styles/data.css" rel="stylesheet">
     <!-- endbuild -->
   </head>
-  <body class="page-history">
+  <body class="">
     <header>
       <h1 class="title">TooBigData</h1>
       <ul>
@@ -26,12 +26,19 @@
       </ul>
     </header>
     <div class="help">
-      <p style="padding: 15px;"></p>
+      <p style="padding: 15px 0">
+        请在下方文本框中输入需要采集的 URL，每行一个。
+      </p>
     </div>
 
     <div class="data-area">
+      <p style="padding-bottom: 15px">
+        采集间隔
+        <input id="input_wait" type="range" min="1" max="30" step="1" />
+        <span id="input_wait_show"></span>秒
+      </p>
       <textarea id="url-input"></textarea>
-      <button id="submit" class="btn">开始</button>
+      <a id="submit" class="btn" hre="#">开始采集</a>
     </div>
 
     <!-- build:js scripts/options-vendor.js -->

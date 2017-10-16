@@ -199,12 +199,12 @@ table {
   text-align: left;
 }
 
-.shortcuts a.btn {
+a.btn {
   display: inline-block;
   border: 1px solid #eee;
   border-radius: 5px;
   padding: 2px 5px;
-  background: #44b549;
+  background: #4d6481;
   color: #fff;
 }
 
@@ -308,13 +308,6 @@ footer {
   margin-bottom: -1px;
 }
 
-#popup a.btn1 {
-  margin: 0;
-  color: #999;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-  padding: 5px;
-}
 
 #data-tab {
   border-top: 1px solid #ccc;
