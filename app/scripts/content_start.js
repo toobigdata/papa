@@ -1,9 +1,11 @@
 (function(window, document){
+	run();
+})(window, document);
 
+function run(){
   chrome.runtime.sendMessage({ 'msgtype': 'getScript', 'url': location.href}, function (response) {
     //console.log(response);
     if(response === 'appendSidebar'){
-
 
       var sidebar = document.createElement('div');
       sidebar.id = 'jianzhi_sidebar';
@@ -27,9 +29,7 @@
       }, 3*1000);
     }
   });
-
-
-})(window, document);
+}
 
 function minuteReload(){
   chrome.runtime.sendMessage({ 'msgtype': 'minuteReload' }, function (response) {

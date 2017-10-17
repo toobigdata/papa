@@ -71,6 +71,12 @@ var config = {
       head: [],
       field: []
     },
+    'weibo.user.info': {
+      display_name: '微博用户',
+      url_re: ['.*weibo.com\/p\/.*\/info\?.*'],
+      head: [],
+      field: []
+    },
 }
 
 // TOTO
