@@ -26,11 +26,18 @@
     crawl();
   }, 3*1000);
 
-  var sidebar = document.createElement('div');
-  sidebar.id = 'jz_crawl_btn';
-  sidebar.style = 'z-index: 999; position: fixed; top: 40px; right: 0; background: green; padding: 10px;';
-  sidebar.innerHTML = '<a style="color: #fff" class="btn" href="#" id="jz_crawl" title="">Auto Crawl</a>';
-  document.body.appendChild(sidebar);
+  var crawl_btn = document.createElement('div');
+  crawl_btn.id = 'jz_crawl';
+  crawl_btn.className = 'jz_btn';
+  crawl_btn.innerHTML = '自动翻页爬数';
+  document.querySelector('#jz_sidebar .sidebar-body').appendChild(crawl_btn);
+
+  var autoreload_btn = document.createElement('div');
+  autoreload_btn.id = 'autoreload';
+  autoreload_btn.className = 'jz_btn';
+  autoreload_btn.innerHTML = '自动刷新';
+  document.querySelector('#jz_sidebar .sidebar-body').appendChild(autoreload_btn);
+
   $('#jz_crawl').click(function(){
 		var intervalId = setInterval(function(){
 			if(crawlNextPage() < 0){
@@ -38,9 +45,11 @@
         alert('done');
       }
 		}, 5*1000);
-    //alert('成功加入监测，监测期间请勿关闭页面。微信分钟级监测最多持续 2 小时。');
   });
 
+  $('#autoreload').click(function(){
+    minuteReload();
+  });
 
 })();
 
@@ -74,11 +83,9 @@ function crawl(){
   chrome.runtime.sendMessage({ 'msgtype': 'weibo.user.follow', 'content': data}, function (response) {
     console.log(response);
   });
-
 }
 
 function crawlNextPage(){
-    //.innerText.indexOf('系统限制');
 
   var btn = document.querySelector('a.page.next');
 	if(btn != null){

@@ -87,8 +87,7 @@ function getWxData(r, type){
 		mid: getQuery(r.url, 'mid'),
 		idx: getQuery(r.url, 'idx'),
 		url: r.url
-	};
-
+	}; 
   if(r && type == 'comment'){
     $.ajax({
         type: "GET",
@@ -196,4 +195,8 @@ function getSource(url) {
     }
   }
   return 0;
+}
+
+function showSidebar(){
+  console.log('show');
 }

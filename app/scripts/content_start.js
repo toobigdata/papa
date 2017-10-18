@@ -8,23 +8,36 @@ function run(){
     if(response === 'appendSidebar'){
 
       var sidebar = document.createElement('div');
-      sidebar.id = 'jianzhi_sidebar';
-      sidebar.innerHTML = '<a class="btn" href="#" id="minuteReload" title=""> 分钟监测 </a>';
+      sidebar.id = 'jz_sidebar';
+      sidebar.innerHTML = '<div class="sidebar-header">TBD</div><div class="sidebar-body"></div>';
       document.body.appendChild(sidebar);
       $('#minuteReload').click(function(){
         minuteReload();
         alert('成功加入监测，监测期间请勿关闭页面。微信分钟级监测最多持续 2 小时。');
       });
+
+      var jz_sidebar = document.getElementById('jz_sidebar');
+      
+      jz_sidebar.addEventListener("mouseover", function(e){
+        jz_sidebar.classList.add('full');
+      })
+
+      jz_sidebar.addEventListener("mouseout", function(e){
+        jz_sidebar.classList.remove('full');
+      })
+
     } else {
       setTimeout(function(){
         var sidebar = document.createElement('div');
         if(location.href.indexOf('detail.tmall.com') > 0){
+          /*
           sidebar.id = 'jianzhi_sidebar';
           sidebar.innerHTML = '<a class="btn" href="#" id="minuteReload" title=""> 自动翻页 </a>';
           document.body.appendChild(sidebar);
           $('#minuteReload').click(function(){
             tmallCommentNextPage();
           });
+          */
         }
       }, 3*1000);
     }
