@@ -72,8 +72,14 @@ var config = {
       field: []
     },
     'weibo.user.info': {
-      display_name: '微博用户',
+      display_name: '微博用户信息',
       url_re: ['.*weibo.com\/p\/.*\/info\?.*'],
+      head: [],
+      field: []
+    },
+    'weibo.user.follow': {
+      display_name: '微博用户关注',
+      url_re: ['.*weibo.com\/p\/.*\/follow.*'],
       head: [],
       field: []
     },
