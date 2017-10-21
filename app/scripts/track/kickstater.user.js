@@ -30,7 +30,7 @@ function crawl(){
   if(superbackerDom) data.fame = superbackerDom.innerText;
   var creatorDom = document.querySelector('.js-created-link span.count');
   if(creatorDom) data.create_num = creatorDom.innerText;
-  data.comment_num = document.querySelector('.js-comments-link span.count').innerText;
+  data.comment_num = document.querySelector('.js-comments-link span.count')?document.querySelector('.js-comments-link span.count').innerText:0;
   data.website = Array.from(document.querySelectorAll('#content-wrap li a')).map(d=>d.href);
 
   console.log(data);

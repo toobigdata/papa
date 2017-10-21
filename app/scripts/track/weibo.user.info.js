@@ -15,7 +15,7 @@ function crawl(){
   data.follow_num = counter[0].innerText;
   data.fan_num = counter[1].innerText;
   data.status_num = counter[2].innerText;
-  data.screen_name = document.querySelector('h1.username').innerText;
+  data.nickname = document.querySelector('h1.username').innerText;
   var info = document.querySelectorAll('li.li_1');
   data.info =Array.from(info).map(a=>a.innerText.replace('\n', ' '));
 

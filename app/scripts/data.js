@@ -2,12 +2,26 @@
 
 $(function(){
 	var source = getQuery(location.href, 'source') || 'wechat.article.content';
+  document.querySelector('#source-name').innerText = config[source].display_name;
+
+
+
   for(var i in config){
-    var li = '<li><a href="/mydata.html?source=' + i + '" id="' + i + '">' + config[i].display_name + '</a></li>';
+    var li = '<option id="' + i + '" value="/mydata.html?source=' + i + '">' + config[i].display_name + '</option>';
     document.querySelector('#source').innerHTML += li;
   }
 
+  $('#source').change(function(d){
+    var url = $(this).children('option:selected').val();
+    location.href = url;
+  });
+
+
   renderBasic(source);
+
+
+
+
   $('table').DataTable({
     'paging': true,
     'order': [[ 0, 'desc' ]]
@@ -15,12 +29,17 @@ $(function(){
 
   $('#' + source).addClass('active');
   $('#clearStorage').click(function(){
-    localStorage[source + '.basic'] = '';
+    localStorage[source] = '[]';
     console.log('clear');
 		alert('清空成功');
 		chrome.tabs.reload();
   });
 });
+
+function redirect(url){
+  console.log(url);
+  location.href = url;
+}
 
 function toLocalTime(date) {
 	var local = new Date(date);
@@ -37,7 +56,8 @@ if (sync === 'true') {
 function renderBasic(source) {
   var key = source;
   //console.log(key);
-  var table = '<h3>历史数据</h3><table id="basic" style="width:100%"><thead><tr>';
+
+  var table = '<h3>最新爬取数据</h3><table id="basic" style="width:100%"><thead><tr>';
   for(var i=0;i<config[key]['head'].length;i++){
     var item = config[key]['head'][i];
     table += '<td>' + item + '</td>';
@@ -45,8 +65,7 @@ function renderBasic(source) {
   table += '</tr></thead><tbody id="basic_body"></tbody></table>';
   document.getElementById('basicData').innerHTML = table;
 
-  var list = '[' + localStorage[key + '.basic'].replace(/,$/, '') + ']';
-  list = JSON.parse(list);
+  var list = getStorage(key);
 
   for(var i=0;i<list.length;i++){
     var tr = '<tr>';

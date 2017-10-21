@@ -11,11 +11,7 @@ localStorage.phone = localStorage.phone || '';
 localStorage.url = localStorage.url || '';
 
 for(var i in config){
-  //console.log(localStorage[i]);
-  localStorage[i] = localStorage[i] || '';
-  if(localStorage[i + '.basic'] == undefined){
-    localStorage[i + '.basic'] = '';
-  }
+  localStorage[i] = localStorage[i] || '[]';
 }
 
 
@@ -129,28 +125,45 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
   } else {
 
     //var source = message.msgtype.replace('_', '.');
-    var source = message.msgtype;
     sendResponse('Data received');
+    var source = message.msgtype;
 
     var data = message.content;
-    data.ts = new Date();
+    var stat_ts = new Date();
+    data.ts = stat_ts;
 
     sendtoServer(data, source);
 
     // 暂不保存
     //localStorage[source] = JSON.stringify(data);
 
+    console.log(data);
 
+    console.log(config[source]);
+
+    if(data == undefined) return;
+
+    if(config[source].list){
+      console.log('list');
+      data = data[config[source].list];
+      for(var i=0;i<data.length;i++){
+        console.log(data[i]);
+        data[i].ts = stat_ts;
+        appendStorage(source, data[i]);
+      }
+    } else {
+      appendStorage(source, data);
+    }
+
+    /*
     for(var i in data){
       console.log(typeof(data[i]));
       if(i != 'ts' && typeof(data[i]) == Object){
         delete(data[i]);
       }
     }
-    console.log(data);
-    if(data != undefined){
-      //localStorage[source + '.basic'] +=  JSON.stringify(data) + ',';
-    }
+    */
+
   
   }
 

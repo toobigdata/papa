@@ -34,7 +34,7 @@ function crawl(){
     if(r.data){
       var sp = r.data.split('&');
       r.uid = sp[0].replace('uid=', '');
-      r.nickname = sp[0].replace('fnick=', '');
+      r.nickname = sp[1].replace('fnick=', '');
       r.gender = sp[2].replace('sex=', '');
     }
     r.link = d.querySelector('.mod_pic a').href;

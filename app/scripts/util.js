@@ -200,3 +200,19 @@ function getSource(url) {
 function showSidebar(){
   console.log('show');
 }
+
+function getStorage(key){
+  return JSON.parse(localStorage[key]);
+}
+
+function appendStorage(key, data){
+  console.log(key);
+  console.log(data);
+  console.log(getStorage(key));
+  var list = getStorage(key);
+  list.push(data);
+  console.log(list);
+  localStorage[key] = JSON.stringify(list);
+
+  //return localStorage[key];
+}

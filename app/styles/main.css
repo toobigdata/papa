@@ -273,13 +273,12 @@ header ul li a:visited {
 }
 
 .help {
-  padding: 0 20px;
+  padding: 15px 20px;
   background: #eee;
   overflow: hidden;
 }
 
 .help ul li {
-  padding: 15px 0;
 }
 
 .data-area {
@@ -417,7 +416,6 @@ ul li {
 
 a#clearStorage {
   display: block;
-  margin: 10px;
   background: red;
   padding: 5px;
   border-radius: 5px;
@@ -454,4 +452,10 @@ a#clearStorage {
 textarea#url-input {
   width: 100%;
   height: 20em;
+}
+
+#source-name {
+  margin-right: 15px;
+  color: red;
+  font-weight: bold;
 }

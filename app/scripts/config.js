@@ -49,39 +49,42 @@ var config = {
     },
     'amazon.com.product': {
       display_name: '亚马逊商品',
-      url_re: ['.*www.amazon.com\/.+\/dp\/.+', '.*www.amazon.com\/gp\/product\/.*'],
-      head: [],
-      field: []
+      url_re: ['.*www.amazon.com\/.+\/dp\/.+'],
+      head: ['采集时间', '商品', '评论数', '评分', '价格'],
+      field: ['ts', 'title', 'review_count', 'rating', 'price']
     },
     'amazon.com.product.review': {
       display_name: '亚马逊商品评论',
       url_re: ['.*www.amazon.com\/.+\/product-reviews\/.+'],
-      head: [],
-      field: []
+      list: 'review_list',
+      head: ['时间', '商品', '作者', '评论日期', 'SKU', '评论数', '内容'],
+      field: ['ts', 'title', 'author', 'date', 'sku', 'comment_num', 'text']
     },
     'kickstater.project.comment': {
       display_name: 'Kickstarter 评论',
       url_re: ['.*www.kickstarter.com\/projects\/.*\/.*\/comments.*'],
-      head: [],
-      field: []
+      list: 'comment_list',
+      head: ['时间', '作者', '评论日期', '内容'],
+      field: ['ts', 'author_name', 'comment_at', 'content']
     },
     'kickstater.user': {
       display_name: 'Kickstarter 用户',
       url_re: ['.*www.kickstarter.com\/profile\/.*\/about'],
-      head: [],
-      field: []
+      head: ['采集时间', '名字', 'back数', '创建项目数', '评论数', '加入时间'],
+      field: ['ts', 'name', 'backed_num', 'create_num', 'comment_num', 'joined_at']
     },
     'weibo.user.info': {
       display_name: '微博用户信息',
       url_re: ['.*weibo.com\/p\/.*\/info\?.*'],
-      head: [],
-      field: []
+      head: ['采集时间', '昵称', '关注数', '粉丝数', '微博数', '详细信息'],
+      field: ['ts', 'nickname', 'follow_num', 'fan_num', 'status_num', 'info']
     },
     'weibo.user.follow': {
       display_name: '微博用户关注',
       url_re: ['.*weibo.com\/p\/.*\/follow.*'],
-      head: [],
-      field: []
+      list: 'follow_list',
+      head: ['采集时间', '微博ID', '昵称', '性别', '关注数', '粉丝数', '微博数', '地址', '简介'],
+      field: ['ts', 'uid', 'nickname', 'gender', 'follow_num', 'fan_num', 'status_num', 'address', 'intro']
     },
 }
 
