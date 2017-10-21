@@ -1,15 +1,31 @@
 (function(window, document){
-	run();
+  run();
 })(window, document);
+
+
+function notify(text){
+  notie.alert({ text: text, time: 3});
+}
+
+function addBtn(id, text, func){
+  var btn = document.createElement('div');
+  btn.id = id;
+  btn.className = 'jz_btn';
+  btn.innerHTML = text;
+  document.querySelector('#jz_sidebar .sidebar-body').appendChild(btn);
+  $('#' + id).click(func);
+}
 
 function run(){
   chrome.runtime.sendMessage({ 'msgtype': 'getScript', 'url': location.href}, function (response) {
     //console.log(response);
     if(response === 'appendSidebar'){
 
+      notify('在当前页面发现可爬数据');
+
       var sidebar = document.createElement('div');
       sidebar.id = 'jz_sidebar';
-      sidebar.innerHTML = '<div class="sidebar-header">TBD</div><div class="sidebar-body"></div>';
+      sidebar.innerHTML = '<div class="sidebar-header">TooBigData</div><div class="sidebar-body"></div>';
       document.body.appendChild(sidebar);
       $('#minuteReload').click(function(){
         minuteReload();

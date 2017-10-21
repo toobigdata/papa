@@ -130,7 +130,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
 
     //var source = message.msgtype.replace('_', '.');
     var source = message.msgtype;
-    sendResponse('received the movie');
+    sendResponse('Data received');
 
     var data = message.content;
     data.ts = new Date();

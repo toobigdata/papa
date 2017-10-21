@@ -31,7 +31,7 @@ var config = {
     },
     'lianjia.zufang': {
       display_name: '链家租房数据',
-      url_re: ['.*lianjia.com\/zufang\/.+'],
+      url_re: ['.*lianjia.com\/zufang\/.+\.html'],
       head: ['时间', '房源标题', '价格', '单位', '装修', '位置'],
       field: ['ts', 'title', 'price', 'price_unit', 'decoration', 'location']
     },

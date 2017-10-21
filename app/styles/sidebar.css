@@ -6,7 +6,7 @@
   border: 1px solid rgb(76, 99, 129);
   //border-top-left-radius: 15px !important;
   //border-bottom-left-radius: 15px !important;
-  z-index: 999;
+  z-index: 99999;
 }
 
 .sidebar-header {
@@ -37,3 +37,13 @@
   border-radius: 5px;
   text-align: center;
 }
+
+/* notie */
+.notie-container {
+	z-index: 99999 !important;
+}
+
+.notie-background-info {
+  background: #4C6381 !important;
+}
+

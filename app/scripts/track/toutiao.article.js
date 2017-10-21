@@ -1,11 +1,8 @@
-'use strict';
-
-
-/******************************************************************************
- * 解析文章
- *****************************************************************************/
 $(function () {
-	crawl();
+  'use strict';
+  setTimeout(function(){
+    crawl();
+  }, 3*1000);
 });
 
 function crawl(){
@@ -20,7 +17,7 @@ function crawl(){
   //console.log(data);
 
   chrome.runtime.sendMessage({ 'msgtype': 'toutiao.article', 'content': data}, function (response) {
-    //console.log(response);
+    console.log(response);
   });
 
 }

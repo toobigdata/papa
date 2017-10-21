@@ -1,19 +1,13 @@
-// ==UserScript==
-// @name         New Userscript
-// @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  try to take over the world!
-// @author       You
-// @match        http://*/*
-// @grant        none
-// ==/UserScript==
-
 (function() {
   'use strict';
   // Your code here...
   setTimeout(function(){
     crawl();
   }, 3*1000);
+
+  addBtn('autoreload', '当页爬', function(){
+    minuteReload();
+  });
 
 })();
 
@@ -38,10 +32,7 @@ function crawl(){
   console.log(data);
 
   chrome.runtime.sendMessage({ 'msgtype': 'amazon.com.product', 'content': data}, function (response) {
-  //chrome.runtime.sendMessage({ 'msgtype': 'test', 'content': data}, function (response) {
-    //console.log(response);
+    console.log(response);
   });
 
 }
-
-

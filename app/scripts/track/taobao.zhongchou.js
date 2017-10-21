@@ -5,6 +5,14 @@
  *****************************************************************************/
 $(function () {
 
+  setTimeout(function(){
+    crawl();
+  }, 3*1000);
+
+});
+
+
+function crawl(){
   var id = getQuery(location.href, 'id');
   console.log(id);
 
@@ -34,5 +42,4 @@ $(function () {
 		},
 		dataType: 'JSON'
 	});
-
-});
+}

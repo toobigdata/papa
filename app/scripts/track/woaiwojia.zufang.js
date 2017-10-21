@@ -1,16 +1,6 @@
-// ==UserScript==
-// @name         New Userscript
-// @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  try to take over the world!
-// @author       You
-// @match        http://*/*
-// @grant        none
-// ==/UserScript==
-
 (function() {
   'use strict';
-  // Your code here...
+
 	crawl();
 
 })();
@@ -30,7 +20,7 @@ function crawl(){
   console.log(data);
 
   chrome.runtime.sendMessage({ 'msgtype': 'woaiwojia.zufang', 'content': data}, function (response) {
-    //console.log(response);
+    console.log(response);
   });
 
 }

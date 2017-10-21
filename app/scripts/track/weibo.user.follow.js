@@ -1,53 +1,23 @@
-// ==UserScript==
-// @name         New Userscript
-// @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  try to take over the world!
-// @author       You
-// @match        http://*/*
-// @grant        none
-// ==/UserScript==
+// 微博关注/粉丝数据
 
 (function() {
   'use strict';
-  // Your code here...
-  
-  Push.create("EasyCrawler 检测到数据", {
-      body: "微博用户关注数据",
-      icon: 'https://raw.githubusercontent.com/toobigdata/EasyCrawler/master/app/images/logo.png',
-      timeout: 5000,
-      onClick: function () {
-          window.focus();
-          this.close();
-      }
-  });
   
   setTimeout(function(){
     crawl();
   }, 3*1000);
 
-  var crawl_btn = document.createElement('div');
-  crawl_btn.id = 'jz_crawl';
-  crawl_btn.className = 'jz_btn';
-  crawl_btn.innerHTML = '自动翻页爬数';
-  document.querySelector('#jz_sidebar .sidebar-body').appendChild(crawl_btn);
 
-  var autoreload_btn = document.createElement('div');
-  autoreload_btn.id = 'autoreload';
-  autoreload_btn.className = 'jz_btn';
-  autoreload_btn.innerHTML = '自动刷新';
-  document.querySelector('#jz_sidebar .sidebar-body').appendChild(autoreload_btn);
-
-  $('#jz_crawl').click(function(){
+  addBtn('jz_crawl', '翻页爬', function(){
 		var intervalId = setInterval(function(){
 			if(crawlNextPage() < 0){
         clearInterval(intervalId);
-        alert('done');
+        notify('数据抓取完毕');
       }
 		}, 5*1000);
   });
 
-  $('#autoreload').click(function(){
+  addBtn('autoreload', '当页爬', function(){
     minuteReload();
   });
 
@@ -78,7 +48,7 @@ function crawl(){
     r.source = d.querySelector('.info_from').innerText;
     return r;
   });
-  console.log(data);
+  //console.log(data);
 
   chrome.runtime.sendMessage({ 'msgtype': 'weibo.user.follow', 'content': data}, function (response) {
     console.log(response);
@@ -88,7 +58,9 @@ function crawl(){
 function crawlNextPage(){
 
   var btn = document.querySelector('a.page.next');
-	if(btn != null){
+	if(btn == null || btn.className.indexOf('page_dis') > 0){
+    return -1;
+  } else {
     btn.click();
     var limit = document.querySelector('.layer_point .point p');
     if(limit) return -1;
@@ -96,7 +68,5 @@ function crawlNextPage(){
       crawl();
       return 1;
     }, 1*1000);
-  } else {
-    return -1;
   }
 }

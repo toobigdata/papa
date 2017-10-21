@@ -22,7 +22,6 @@ function crawl(){
   console.log(data);
 
   chrome.runtime.sendMessage({ 'msgtype': 'dianping.shop', 'content': data}, function (response) {
-    //console.log(response);
+    console.log(response);
   });
-
 }

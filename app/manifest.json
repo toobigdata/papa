@@ -1,9 +1,9 @@
 {
-  "name": "EasyCrawler",
+  "name": "TooBigData",
   "short_name": "EasyCrawler",
-  "version": "0.8.2",
+  "version": "1.0.0",
   "manifest_version": 2,
-  "description": "浏览器数据爬虫插件，支持微信、头条、豆瓣等数据",
+  "description": "所见即所得的网络爬虫插件",
   "icons": {
     "16": "images/icon16.png",
     "48": "images/icon48.png",
@@ -25,18 +25,9 @@
   "content_scripts": [
       {
           "matches": ["<all_urls>"],
-          "js": ["scripts/lib/jquery.js", "scripts/util.js", "scripts/lib/push.min.js", "scripts/content_start.js"],
-          "css": ["styles/sidebar.css"],
-          "run_at" : "document_end",
-          "all_frames": false
-      },
-      {
-          "matches": ["*://mp.weixin.qq.com/s?*", "*://mp.weixin.qq.com/mp/*"],
-          "js": ["scripts/spoofer_cs.js", "scripts/util.js"],
-          "css": ["styles/article.css"],
-          "run_at" : "document_start",
-          "all_frames": false
-      }
+          "js": ["scripts/lib/jquery.js", "scripts/util.js", "scripts/lib/notie.min.js", "scripts/content_start.js"],
+          "css": ["styles/sidebar.css", "styles/notie.min.css"],
+          "run_at" : "document_end", "all_frames": false }, { "matches": ["*://mp.weixin.qq.com/s?*", "*://mp.weixin.qq.com/mp/*"], "js": ["scripts/spoofer_cs.js", "scripts/util.js"], "css": ["styles/article.css"], "run_at" : "document_start", "all_frames": false }
   ],
   "browser_action": {
     "default_icon": {
