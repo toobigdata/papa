@@ -459,3 +459,8 @@ textarea#url-input {
   color: red;
   font-weight: bold;
 }
+
+#source-list {
+  padding-left: 35px;
+  border-left: 5px solid #eee;
+}
