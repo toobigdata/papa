@@ -1,41 +1,44 @@
-# EasyCrawler 
+# TooBigData 
 
-EasyCrawler 是一个用于爬取数据的 Chrome 插件，可用于获取微信文章、今日头条、豆瓣电影等数据。
+这是一只数据产品经理自用两年的工具，现在推荐给你。
 
-## Demo
+TooBigData 是一个帮助用户采集数据的 Chrome 插件，可在 Chrome 及 Chrome 内核的浏览器中使用，如 QQ 浏览器、360 浏览器、搜狗浏览器等。
 
-有 3 种安装方式：
+## 安装
 
-- [通过 Chrome Web Store 安装](https://chrome.google.com/webstore/detail/%E7%AE%80%E7%9B%B4%E6%95%B0%E6%8D%AE%E5%8A%A9%E6%89%8B/iadbllfinbilapjhgjibpeifljdgeopn?hl=en-US&gl=US)
-- 通过 crx 安装（[下载](https://pan.baidu.com/s/1nuU7pxR)）
+- [通过 Chrome 商店安装](https://chrome.google.com/webstore/detail/toobigdata/iadbllfinbilapjhgjibpeifljdgeopn)
 - 通过加载 app 目录安装
 
+## 演示
 
-## 微信变量说明
+https://www.youtube.com/watch?v=NCUJCnFZrAw
 
-| 变量           | 含义         | 类型   | 取值范围    | 非法值 |
-|----------------|--------------|--------|-------------|--------|
-| readCount      | 阅读数       | int    | [0,+∞)      | -1     |
-| likeCount      | 点赞数       | int    | [0,+∞)      | -1     |
-| commentCount   | 评论数       | int    | [0,+∞)      | -1     |
-| rewardCount    | 打赏数       | int    | [0,+∞)      | 无     |
-| imageCount     | 图片数       | int    | [0,+∞)      | 无     |
-| voiceCount     | 语音数       | int    | [0,+∞)      | 无     |
-| musicCount     | 音乐数       | int    | [0,+∞)      | 无     |
-| videoCount     | 视频数       | int    | [0,3]       | 无     |
-| voteCount      | 投票数       | int    | [0,1]       | 无     |
-| _copyrightStat | 包含原创标识 | string | 1,0         | 无     |
-| biz            | 公众号id     | string |             |        |
-| mid            | 消息id       | string |             |        |
-| idx            | 消息id       | string | '1' to '8'  |        |
-| uin            | 文章uuid     | string | biz.mid.idx |        |
-| sn             | 未知         | string |             |        |
-| url            | 文章url      | string |             |        |
-| title          | 标题         | stinrg |             |        |
-| author         | 公众号名称   | stinrg |             |        |
-| digest         | 摘要         | stinrg |             |        |
-| cover          | 头图url      | stinrg | url         |        |
-| oriUrl         | 原文链接     | stinrg | url         |        |
-| ct             | 发布时间     | stinrg | unix 时间戳 |        |
-| uin            | 用户id       | string |             |        |
-| key            | 用户key      | string |             |        |
+https://www.youtube.com/watch?v=7LY7CDP4k34
+
+## 主要功能
+
+- 可以在网页上显示微信文章的阅读点赞评论打赏数据
+- 微信文章分钟监测及文章回采
+- 查看收藏夹数据，分层级显示
+- 内置通用的URL打开器，可辅助自动爬数
+- 自动关闭已爬页面
+- 插件免费开源，无限扩展
+
+
+## 支持数据源
+
+- 微信文章数据
+- 淘宝众筹数据
+- 今日头条文章数据
+- 豆瓣电影数据
+- 大众点评数据
+- 链家租房数据
+- 我爱我家租房数据
+- 京东商品
+- 亚马逊商品
+- 亚马逊商品评论
+- Kickstarter 评论
+- Kickstarter 用户
+- 微博用户信息
+- 微博用户关注
+- 更多数据源还在增加中...

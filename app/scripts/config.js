@@ -57,7 +57,7 @@ var config = {
       display_name: '亚马逊商品评论',
       url_re: ['.*www.amazon.com\/.+\/product-reviews\/.+'],
       list: 'review_list',
-      head: ['时间', '商品', '作者', '评论日期', 'SKU', '评论数', '内容'],
+      head: ['时间', '标题', '作者', '评论日期', 'SKU', '评论数', '内容'],
       field: ['ts', 'title', 'author', 'date', 'sku', 'comment_num', 'text']
     },
     'kickstater.project.comment': {
