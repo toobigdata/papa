@@ -1,7 +1,7 @@
 (function() {
   'use strict';
   setTimeout(function(){
-    crawl();
+    //crawl();
   }, 3*1000);
 
   addBtn('jz_crawl', '翻页爬', function(){
@@ -15,6 +15,7 @@
 
 })();
 
+/*
 function crawl(){
 
   var data = {};
@@ -29,9 +30,10 @@ function crawl(){
   });
 
 }
+*/
 
 function crawlNextPage(){
-	var btn = document.querySelector('a.ui-pager-next');
+	var btn = document.querySelector('.rate-paginator a:nth-last-child(1)');
 	if(btn != null){
     btn.click();
     setTimeout(function(){

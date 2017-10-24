@@ -48,10 +48,10 @@ function correct(url) {
 
 
 function getComments(url){
-  var source = 'comments';
-  if(url.indexOf('jd.com') > 0) source = 'jd.product.comments';
+  var source = 'comment';
+  if(url.indexOf('jd.com') > 0) source = 'jd.product.comment';
 
-  if(url.indexOf('tmall.com') > 0) source = 'tmall.product.comments';
+  if(url.indexOf('tmall.com') > 0) source = 'tmall.product.comment';
 
 	$.ajax({
 			url: url,
@@ -59,27 +59,13 @@ function getComments(url){
 			success: function(d) { 
         json = d.substr(d.indexOf('{'), d.lastIndexOf('}') - d.indexOf('{') + 1);
         json = JSON.parse(json); 
+        json.url = url;
         sendtoServer(json, source);
         console.log('get comments' + url);
       }
 	});
 }
 
-
-function getBacker(r){
-  var source = 'krowdster.json';
-
-  $.ajax({
-      type: "GET",
-      url: r.url + "&do_not",
-      //data: r.requestBody.formData,
-      //contentType: false,
-      success: function(d) { 
-          console.log(d);
-          sendtoServer(d, source);
-      }
-  });
-}
 
 function getWxData(r, type){
 	var meta = {

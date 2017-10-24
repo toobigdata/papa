@@ -47,6 +47,12 @@ var config = {
       head: ['时间', '商品名', '价格', '评论数'],
       field: ['ts', 'title', 'price', 'commentCount']
     },
+    'tmall.product': {
+      display_name: '天猫商品',
+      url_re: ['.*detail.tmall.com\/item\.htm.*'],
+      head: ['时间', '商品名', '价格', '评论数'],
+      field: ['ts', 'title', 'price', 'commentCount']
+    },
     'amazon.com.product': {
       display_name: '亚马逊商品',
       url_re: ['.*www.amazon.com\/.+\/dp\/.+'],
