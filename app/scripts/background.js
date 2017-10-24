@@ -137,15 +137,19 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     // 暂不保存
     //localStorage[source] = JSON.stringify(data);
 
-    console.log(data);
+    //console.log(data);
 
     console.log(config[source]);
 
     if(data == undefined) return;
 
+    console.log('config[source].list');
+    console.log(config[source]);
+
     if(config[source].list){
       console.log('list');
       data = data[config[source].list];
+      console.log(data);
       for(var i=0;i<data.length;i++){
         console.log(data[i]);
         data[i].ts = stat_ts;

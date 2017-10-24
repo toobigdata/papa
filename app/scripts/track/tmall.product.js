@@ -1,7 +1,7 @@
 (function() {
   'use strict';
   setTimeout(function(){
-    //crawl();
+    crawl();
   }, 3*1000);
 
   addBtn('jz_crawl', '翻页爬', function(){
@@ -15,22 +15,21 @@
 
 })();
 
-/*
 function crawl(){
 
   var data = {};
   data.url = location.href;
-  data.title = document.querySelector('.sku-name').innerText;
-  data.price = document.querySelector('.price').innerText;
-  data.commentCount = document.querySelector('.comment-count .count')?document.querySelector('.comment-count .count').innerText:'';
+  data.title = document.querySelector('.tb-detail-hd h1').innerText;
+  data.price = document.querySelector('.tm-price').innerText;
+  data.sellCount = document.querySelector('.tm-ind-sellCount .tm-count')?document.querySelector('.tm-ind-sellCount .tm-count').innerText:'';
+  data.commentCount = document.querySelector('.tm-ind-reviewCount .tm-count')?document.querySelector('.tm-ind-reviewCount .tm-count').innerText:'';
   console.log(data);
 
-  chrome.runtime.sendMessage({ 'msgtype': 'jd.product', 'content': data}, function (response) {
+  chrome.runtime.sendMessage({ 'msgtype': 'tmall.product', 'content': data}, function (response) {
     console.log(response);
   });
 
 }
-*/
 
 function crawlNextPage(){
 	var btn = document.querySelector('.rate-paginator a:nth-last-child(1)');

@@ -62,6 +62,18 @@ function getComments(url){
         json.url = url;
         sendtoServer(json, source);
         console.log('get comments' + url);
+
+        var listData = json;
+
+        var selector = config[source].list.split('.');
+        for(var j=0;j<selector.length;j++){
+          listData = listData[selector[j]];
+        }
+
+        for(var i=0;i<listData.length;i++){
+          listData[i].ts = new Date();
+          appendStorage(source, listData[i]);
+        }
       }
 	});
 }

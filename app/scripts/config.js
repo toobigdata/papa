@@ -47,11 +47,25 @@ var config = {
       head: ['时间', '商品名', '价格', '评论数'],
       field: ['ts', 'title', 'price', 'commentCount']
     },
+    'jd.product.comment': {
+      display_name: '京东商品评论',
+      url_re: [],
+      list: 'comments',
+      head: ['时间', '商品名', '作者', '内容'],
+      field: ['ts', 'referenceName', 'nickname', 'content']
+    },
     'tmall.product': {
       display_name: '天猫商品',
       url_re: ['.*detail.tmall.com\/item\.htm.*'],
       head: ['时间', '商品名', '价格', '评论数'],
       field: ['ts', 'title', 'price', 'commentCount']
+    },
+    'tmall.product.comment': {
+      display_name: '天猫商品评论',
+      url_re: [],
+      list: 'rateDetail.rateList',
+      head: ['时间', '评论编号', '作者', '内容'],
+      field: ['ts', 'id', 'displayUserNick', 'rateContent']
     },
     'amazon.com.product': {
       display_name: '亚马逊商品',
