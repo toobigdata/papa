@@ -123,6 +123,58 @@ function getWxData(r, type){
 	}
 }
 
+function getAmazonSellerMessageData(r){
+    $.ajax({
+        type: "POST",
+        url: r.url + "#do_not",
+        data: r.requestBody,
+        //contentType: false,
+        success: function(d) { 
+            console.log(d);
+            var parser = new DOMParser();
+            d = parser.parseFromString(d, "text/xml");
+
+            var data = {};
+            data.url = location.href;
+
+            var scriptList = Array.from(d.querySelectorAll('script'));
+            console.log(scriptList);
+
+            data.message_list = scriptList.map(function(d){
+              
+              var message = {};
+              if(d.innerText.indexOf('P.when("sm-controller-thread", \'sm-view-threadList\'') > 0){
+                message.buyer_id = d.innerText.split('\n')[5].trim().replace(/["|,]/g, '');
+                var domid = buyer_email = d.innerText.split('\n')[8].trim().replace('"', '').replace('",', '');
+                //message.domid = domid;
+                message.subject = document.querySelector('#' + domid + ' .thread-subject').innerText;
+                message.buyer_name = document.querySelector('#' + domid + ' .thread-buyername').innerText;
+                message.buyer_email = document.querySelector('#' + domid + ' .a-size-small.hidden').innerText;
+                if(message.subject.indexOf('Order information from Amazon') > -1){
+                  message.order_id = message.subject.replace('Order information from Amazon seller MobvoiUS (Order: ', '').replace(')', '');
+                }
+
+                return message;
+
+              } else {
+                return null;
+              }
+            });
+
+            data.message_list = data.message_list.filter(n=>n);
+
+            console.log(data);
+            sendtoServer(data, 'amazon.sellercentral.message');
+          /*
+            var json = {};
+            json.comment_data = d;
+            json.meta_data = meta;
+            sendtoServer(json, 'wechat.article.comment');
+            */
+        }
+    });
+}
+
 function sendtoServer(data, source) {
 
   var manifest = chrome.runtime.getManifest();

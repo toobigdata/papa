@@ -37,6 +37,7 @@ function crawl(){
     review.rating = item.querySelector('a i.review-rating').innerText.replace(' out of 5 stars', '');
     review.title = item.querySelector('a.review-title').innerText;
     review.author = item.querySelector('.author').innerText;
+    review.author_profile_url = item.querySelector('.author').href;
     //review.author_fame = item.querySelector('a.c7y-badge-hall-of-fame').innerText;
     review.date = item.querySelector('.review-date').innerText;
     review.sku = item.querySelector('.review-data.review-format-strip').innerText;

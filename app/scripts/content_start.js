@@ -25,7 +25,7 @@ function run(){
 
       var sidebar = document.createElement('div');
       sidebar.id = 'jz_sidebar';
-      sidebar.innerHTML = '<div class="sidebar-header">TooBigData</div><div class="sidebar-body"></div>';
+      sidebar.innerHTML = '<div class="sidebar-header">问问爬爬</div><div class="sidebar-body"></div>';
       document.body.appendChild(sidebar);
       $('#minuteReload').click(function(){
         minuteReload();
@@ -63,8 +63,10 @@ function run(){
 function minuteReload(){
   chrome.runtime.sendMessage({ 'msgtype': 'minuteReload' }, function (response) {
     //console.log(response);
+    if(response == 'running') {
+      document.title = '[正在爬取，每分钟刷新]' + document.title;
+    }
   });
-  console.log('minute');
 }
 
 function tmallCommentNextPage(){

@@ -9,6 +9,10 @@ $(function () {
     crawl();
   }, 3*1000);
 
+  addBtn('autoreload', '当页爬', function(){
+    minuteReload();
+  });
+
 });
 
 

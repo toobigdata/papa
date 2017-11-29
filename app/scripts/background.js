@@ -22,18 +22,24 @@ function sendtoServer(data, source) {
   var ts = new Date();
   var today = ts.getFullYear() + '-' + ('0' + (ts.getMonth() + 1)).slice(-2) + '-' + ('0' + ts.getDate()).slice(-2);
 
+  //var url = 'http://mobvoi-analytics-transfer.mobvoi.com/log/backend';
   var url = 'http://pcsdpku.com/jz/index.php';
 
 	$.ajax({
 			type: 'POST',
 			url: url,
 			data: JSON.stringify({
-				'uid': phone,
-				'source': source,
-				'data': JSON.stringify(data),
-				'timestamp': ts.getTime(),
-				'event_date': today,
-				'version': crxVersion
+       // 'service_key': 'papa',
+       // 'details':{
+          'uid': phone,
+       //   'dim1': source,
+          'source': source,
+          'data': JSON.stringify(data),
+          'timestamp': ts.getTime(),
+          'event_date': today,
+          'version': crxVersion
+       //   'value': 1
+       // }
 			}),
 			success: function(d) { console.log(d); },
 			contentType: 'application/json',
@@ -56,11 +62,14 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
   } else if (message.msgtype == 'minuteReload') {
 
       setInterval(function(){
-        //console.log(1);
         chrome.tabs.reload(tabId);
+        setTimeout(function(){
+          chrome.tabs.executeScript(tabId,{code:"document.title = '[Running]' + document.title"});
+        }, 3*1000);
+
       }, 50*1000);
 
-      sendResponse('begin reload');
+      sendResponse('running');
   } else if (message.msgtype == 'checkStatus') {
 
     if(isOn === 'true'){
@@ -135,9 +144,6 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     sendtoServer(data, source);
 
     // 暂不保存
-    //localStorage[source] = JSON.stringify(data);
-
-    //console.log(data);
 
     console.log(config[source]);
 
@@ -265,6 +271,32 @@ chrome.webRequest.onBeforeRequest.addListener(
   },
   []
 );
+
+
+/*
+chrome.webRequest.onBeforeRequest.addListener(
+  function(details) {
+    //getComments(details.url);
+    
+		if (details.url.endsWith("do_not")) {
+			console.log('do not modify');
+			return {redirectUrl: chrome.extension.getURL("returnjs.js")};
+		}
+
+		if(1){
+			getAmazonSellerMessageData(details);
+		}
+		return {redirectUrl: chrome.extension.getURL("returnjs.js")};
+  },
+  {
+    urls: [
+        "https://sellercentral.amazon.com/messaging/inbox/ajax/load-threads"
+    ],
+    types: ["xmlhttprequest"]
+  },
+  []
+);
+*/
 
 
 daemon();

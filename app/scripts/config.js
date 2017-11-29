@@ -80,6 +80,13 @@ var config = {
       head: ['时间', '标题', '作者', '评论日期', 'SKU', '评论数', '内容'],
       field: ['ts', 'title', 'author', 'date', 'sku', 'comment_num', 'text']
     },
+    'amazon.sellercentral.message': {
+      display_name: '亚马逊商家后台消息',
+      url_re: ['.*sellercentral.amazon.com/messaging/inbox.*'],
+      list: 'message_list',
+      head: ['统计时间',  '作者', '作者编号', '邮箱', '订单编号'],
+      field: ['ts', 'buyer_name', 'buyer_id', 'buyer_email', 'order_id']
+    },
     'kickstater.project.comment': {
       display_name: 'Kickstarter 评论',
       url_re: ['.*www.kickstarter.com\/projects\/.*\/.*\/comments.*'],
