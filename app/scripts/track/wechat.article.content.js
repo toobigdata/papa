@@ -30,6 +30,7 @@ $(function () {
   a.wxtoken = getWxVar('window.wxtoken'); // 暂不清楚
   a.devicetype = getWxVar('devicetype'); //.replace(/&amp;/g,'&');
   a.userUin = getWxVar('user_uin'); // 暂不清楚
+  a.appmsg_token = getWxVar('appmsg_token'); // 暂不清楚
 
   // 记录公众号信息
   a.accountId = document.querySelectorAll('.profile_meta_value')[0].innerText;
@@ -162,7 +163,7 @@ $(function () {
   //console.log(a);
 
   // 提交到后台处理
-  chrome.runtime.sendMessage({ 'msgtype': 'wechat.article.content', 'content': a }, function (response) {
+  chrome.runtime.sendMessage({ 'msgtype': 'wechat.article.content', 'content': a, 'detail': { 'appmsg_token': a.appmsg_token} }, function (response) {
     console.log(response);
   });
 
@@ -174,7 +175,7 @@ $(function () {
  *****************************************************************************/
 function getWxVar(index) {
   var content = document.body.innerHTML;
-  var re = new RegExp('var ' + index + ' = [\"\'](.+)[\"\']');
+  var re = new RegExp('var ' + index + ' + = [\"\'](.+)[\"\']');
   var a = content.match(re);
   if (!a) return null;
   var a = a[0];
@@ -186,7 +187,6 @@ function getWxVar(index) {
     var s = a.indexOf('"');
     var e = a.lastIndexOf('"');
   } 
-
 
   return a.substring(s + 1, e);
 }

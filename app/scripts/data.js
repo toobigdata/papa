@@ -5,8 +5,6 @@ $(function(){
 	var source = getQuery(location.href, 'source') || 'wechat.article.content';
   document.querySelector('#source-name').innerText = config[source].display_name;
 
-
-
   for(var i in config){
     var li = '<option id="' + i + '" value="/mydata.html?source=' + i + '">' + config[i].display_name + '</option>';
     document.querySelector('#source').innerHTML += li;
@@ -25,7 +23,7 @@ $(function(){
 
   $('table').DataTable({
     'paging': true,
-    "pageLength": 1000,
+    "pageLength": 200,
     'order': [[ 0, 'desc' ]],
     'buttons': [
         'excelHtml5'

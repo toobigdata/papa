@@ -2,29 +2,32 @@ var historyMax = localStorage.options_wechatHistoryMax || 10;
 var crawlQueue = [];
 var currentCount = 1;
 $(function(){
+  init();
   currentCount = 1;
   getData(0);
 });
 
 var inputUrl = location.href;
-//var apibase = 'https://mp.weixin.qq.com/mp/profile_ext?action=getmsg&__biz=MjM5MzE3OTAwMw==&f=json&offset=11&count=10&is_ok=1&scene=124&uin=777&key=777&pass_ticket=&wxtoken=&appmsg_token=919_pNr22cEgp5kh1EWbBqtkD97SGYwQq0jT_i-X6A~~&x5=0&f=json';
 var apibase = 'https://mp.weixin.qq.com/mp/profile_ext';
 var devicetype = getQuery(location.href, 'devicetype');
 var version = getQuery(location.href, 'version');
 var ascene = getQuery(location.href, 'ascene');
+var appmsg_token = getQuery(location.href, 'appmsg_token');
 
 var q = {
   'action'         : 'getmsg',
   '__biz'          : getQuery(inputUrl, '__biz'),      // * Unique id of an Offical Account
   'f'              : 'json',
   'offset'         : 0,
-  'frommsgid'      : '',
+  //'frommsgid'      : '',
   'count'          : 10,
   'is_ok'          : 1,
+  'scene'          : 124,
   'uin'            : 777,
   'key'            : 777,
   'pass_ticket'    : '',
   'wxtoken'        : '',
+  'appmsg_token'   : appmsg_token,
   'x5'             : 0
   //'uin'            : getQuery(inputUrl, 'uin'),        // * Unique id of a Wechat User
   //'key'            : getQuery(inputUrl, 'key'),
@@ -143,7 +146,7 @@ function renderLine(line){
     var li = document.createElement('li');
     var a = document.createElement('a');
     a.innerText = line.replace(/\n/g,'');
-    a.href = line.replace(/#wechat_redirect/,'') + '&uin=' + q.uin + '&key=' + q.key + '&pass_ticket=' + q.pass_ticket + '&devicetype=' + devicetype + '&version=' + version + '&ascene=' + ascene + '##wechat_redirect';
+    a.href = line.replace(/#wechat_redirect/,'') + '&uin=' + q.uin + '&key=' + q.key + '&pass_ticket=' + q.pass_ticket + '&devicetype=' + devicetype + '&version=' + version + '&ascene=' + ascene + '&appmsg_token' + appmsg_token + '##wechat_redirect';
 
     crawlQueue.push(a.href);
 

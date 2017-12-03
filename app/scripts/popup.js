@@ -2,6 +2,7 @@
 
 $(function(){
   loadConfig();
+	render();
   /*
   var manifest = chrome.runtime.getManifest();
   document.getElementById('version').innerText = manifest.version; 
@@ -44,6 +45,39 @@ if (sync === 'true') {
 function closeAllWxTabs(){
   chrome.runtime.sendMessage({ 'msgtype': 'command', 'command': 'closeAllWxTabs' }, function (response) {
     console.log(response);
+  });
+}
+
+function render() {
+
+  chrome.tabs.query({
+    // 获取当前窗口当前标签页
+    currentWindow: true,
+    active: true
+  }, function (tabArray) {
+    console.log(tabArray);
+    var taburl = tabArray[0].url;
+    if(taburl.indexOf('mp.weixin.qq.com/s?') < 0){
+      return;
+    }
+
+    var biz = getQuery(taburl, '__biz');
+    var mid = getQuery(taburl, 'mid');
+    var idx = getQuery(taburl, 'idx');
+    var uid = biz + '.' + mid + '.' + idx;
+
+    var uin = getQuery(taburl, 'uin');
+    var key = getQuery(taburl, 'key');
+    var pass_ticket = getQuery(taburl, 'pass_ticket');
+    var devicetype = getQuery(taburl, 'devicetype');
+    var version = getQuery(taburl, 'version');
+    var ascene = getQuery(taburl, 'ascene');
+    var appmsg_token = localStorage.appmsg_token;
+
+    if(biz&&uin&&key&&pass_ticket){
+      var accountUrl = 'account.html?__biz=' + biz + '&uin=' + uin + '&key=' + key + '&pass_ticket=' + pass_ticket + '&devicetype=' + devicetype + '&version=' + version + '&ascene=' + ascene + '&appmsg_token=' + appmsg_token;
+      document.getElementById('history').href = accountUrl;
+    }
   });
 }
 

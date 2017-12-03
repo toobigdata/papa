@@ -78,51 +78,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     } else {
       sendResponse('off');
     }
-
-  } else if (message.msgtype == 'wechat.article') {
-
-    var source = 'wechat.article';
-    localStorage[source] = JSON.stringify(message.content);
-    var basic = message.content;
-    basic.ts = new Date();
-    sendtoServer(basic, source);
-    delete(basic.appmsg_ext);
-    delete(basic.appmsgstat);
-    delete(basic.appmsg_comment);
-    delete(basic.uin);
-    delete(basic.key);
-    if(basic){
-      localStorage[source + '.basic'] += (JSON.stringify(message.content) + ',');
-    }
-
-    if(message.content.uin && message.content.uin.length > 0){
-      localStorage.uin = message.content.uin;
-    }
-
-    chrome.storage.local.get(null, function (result) {
-
-      result[message.content.uid] = message.content;
-
-      chrome.storage.local.set(result, function () {
-        //console.log(message.content);
-        //article = message.content;
-      });
-
-      // toggle the icon
-      var readsuccess = message.content.readCount;
-      if(readsuccess === -1) {
-        chrome.browserAction.setIcon({ path: { '19': 'images/icon19_gray.png' } });
-        chrome.browserAction.setIcon({ path: { '38': 'images/icon38_gray.png' } });
-        console.log('icon changed to gray');
-      } else {
-        chrome.browserAction.setIcon({ path: { '19': 'images/icon19.png' } });
-        chrome.browserAction.setIcon({ path: { '38': 'images/icon38.png' } });
-        console.log('icon changed to active');
-      }
-
-    });
-
-    sendResponse('received the article');
+  
   } else if(message.msgtype == 'command') {
     if(message.command === 'closeAllWxTabs') closeTabs();
     else if(message.command === 'updateSettings'){
@@ -164,6 +120,9 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
       }
     } else {
       appendStorage(source, data);
+      if(message.detail && message.detail.appmsg_token){
+        localStorage.appmsg_token = message.detail.appmsg_token;
+      };
     }
 
     /*
@@ -299,5 +258,17 @@ chrome.webRequest.onBeforeRequest.addListener(
 );
 */
 
+/*
+      var readsuccess = message.content.readCount;
+      if(readsuccess === -1) {
+        chrome.browserAction.setIcon({ path: { '19': 'images/icon19_gray.png' } });
+        chrome.browserAction.setIcon({ path: { '38': 'images/icon38_gray.png' } });
+        console.log('icon changed to gray');
+      } else {
+        chrome.browserAction.setIcon({ path: { '19': 'images/icon19.png' } });
+        chrome.browserAction.setIcon({ path: { '38': 'images/icon38.png' } });
+        console.log('icon changed to active');
+      }
+*/
 
 daemon();
