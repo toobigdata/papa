@@ -6,6 +6,7 @@ console.log('start');
 var phone, isWechatAutoClose, wechatHistoryMax;
 isWechatAutoClose = localStorage.options_wechatAutoClose || 'false';
 
+localStorage.papa_switch = localStorage.papa_switch || 'true';
 localStorage.options_wechatAutoClose = localStorage.options_wechatAutoClose || 'false';
 localStorage.phone = localStorage.phone || '';
 localStorage.url = localStorage.url || '';
@@ -55,7 +56,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     var source = getSource(sender.url);
     //console.log(source);
 
-    if(source !== 0){
+    if(localStorage.papa_switch == 'true' && source !== 0){
       chrome.tabs.executeScript(tabId, {file: 'scripts/track/' + source + '.js'});
       sendResponse('appendSidebar');
     }

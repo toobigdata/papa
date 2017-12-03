@@ -3,31 +3,37 @@
   <head>
     <meta charset="utf-8">
     <link href="styles/main.css" rel="stylesheet">
-    <script src="scripts/lib/jquery.js"></script>
-    <script src="scripts/util.js"></script>
-    <script src="scripts/popup.js"></script>
   </head>
   <body id="popup">
     <div id="main">
 
-      <h1 id="title">爬爬
-        <a id="show-options" href="#" style="color: #fff">[设置]</a><span id="version"></span>
+      <h1 class="topnav">爬爬
+        <span id="version"></span>
+        <a id="show-options" href="#" style="color: #fff">[设置]</a>
       </h1>
       <div id="alert" class="hidden"></div>
 
       <div class="shortcuts">
+        <p class="title">爬数开关</p>
+        <input type="checkbox" id="papa_switch" /> <label id="papa_switch_status">未开启</label>
+      </div>
+
+      <div class="shortcuts">
         <p class="title">快捷入口</p>
         <a class="btn" href="mydata.html" id="mydata" target="_blank" title="查看我的最近数据">
-          我的数据
+          数据
         </a>
-        <a class="btn" href="bookmarks.html" id="help" target="_blank" title="使用说明书">
-          我的书签
+        <a class="btn" href="bookmarks.html" id="help" target="_blank" title="收藏夹">
+          书签
         </a>
         <a class="btn" href="urlviewer.html" id="help" target="_blank" title="URL查看">
-          URL查看
+          队列
         </a>
         <a class="btn" href="help.html" id="help" target="_blank" title="使用说明书">
-          使用说明
+          文档
+        </a>
+        <a class="btn" href="https://jinshuju.net/f/DmHK6x" id="help" target="_blank" title="反馈">
+          反馈
         </a>
       </div>
 
@@ -49,14 +55,13 @@
         </div>
         <div class="option-box">
           <p>微信设置</p>
-          <input type="checkbox" id="input_wechatAutoClose" /> <label id="autoCloseLabel">定时自动关闭微信文章</label>
+						<input type="checkbox" id="input_wechatAutoClose" /> <label id="autoCloseLabel">定时自动关闭微信文章</label>
           <br>
           <p>
           <label id="maxLabel">回采页数</label>
           <input id="input_wechatHistoryMax" type="range" min="10" max="100" step="10" />
           <span id="input_wechatHistoryMax_show"></span>
           </p>
-
         </div>
 
         <input type="button" id="save" value="保存" />
@@ -73,6 +78,8 @@
     </div>
 
     <script src="scripts/lib/jquery.js"></script>
+    <script src="scripts/util.js"></script>
+    <script src="scripts/popup.js"></script>
     <script src="scripts/options.js"></script>
   </body>
 </html>

@@ -6,7 +6,7 @@ $(function(){
 
 
 
-function init(){
+function loadConfig(){
   var phone = localStorage.phone || '';
   var isWechatAutoClose = localStorage.options_wechatAutoClose === 'true';
   var wechatHistoryMax = localStorage.options_wechatHistoryMax || 10;

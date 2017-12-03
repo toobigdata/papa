@@ -3,6 +3,7 @@
 var bookmarks_md = '';
 var bookmarks_html = '';
 $(function(){
+  init();
   chrome.bookmarks.getTree(function(d){
     //console.log(d);
     for(var i in d){

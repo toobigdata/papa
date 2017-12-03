@@ -266,3 +266,8 @@ function appendStorage(key, data){
 
   //return localStorage[key];
 }
+
+function init(){
+  var manifest = chrome.runtime.getManifest();
+  document.getElementById('brand').innerText = manifest.name; 
+}

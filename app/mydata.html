@@ -9,13 +9,13 @@
   </head>
   <body>
     <header>
-      <h1 class="title">爬爬</h1>
+      <h1 class="title" id="brand"></h1>
       <ul>
         <li><a href="/mydata.html" class="active">我的数据</a></li>
         <li><a href="/help.html">使用说明</a></li>
       </ul>
       <ul class="right">
-        <li><a href="http://toobigdata.com">简直数据平台</a></li>
+        <li><a href="http://toobigdata.com">TooBigData 数据平台</a></li>
       </ul>
     </header>
     <div class="help">
@@ -23,14 +23,11 @@
       <select id="source">
         <option>切换数据源</option>
       </select>
-      <ul class="right"><a id="clearStorage" href="#">清空本页数据</a></ul>
+      <ul class="right"><a id="clearStorage" href="#">清空此数据源</a></ul>
     </div>
     <div id="mydata">
       <div id="basicData" class="data-area"></div>
     </div>
-    <footer>
-      <p>Powered by <a href="http://jianzhiim.com" target="_blank">Jianzhi.im</a></p>
-    </footer>
 
     <script src="scripts/lib/jquery.js"></script>
     <script src="scripts/util.js"></script>

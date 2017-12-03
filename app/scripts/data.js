@@ -1,6 +1,7 @@
 'use strict';
 
 $(function(){
+  init();
 	var source = getQuery(location.href, 'source') || 'wechat.article.content';
   document.querySelector('#source-name').innerText = config[source].display_name;
 
@@ -24,7 +25,11 @@ $(function(){
 
   $('table').DataTable({
     'paging': true,
-    'order': [[ 0, 'desc' ]]
+    "pageLength": 1000,
+    'order': [[ 0, 'desc' ]],
+    'buttons': [
+        'excelHtml5'
+    ]
   });
 
   $('#' + source).addClass('active');

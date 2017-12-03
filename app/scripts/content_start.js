@@ -25,7 +25,7 @@ function run(){
 
       var sidebar = document.createElement('div');
       sidebar.id = 'jz_sidebar';
-      sidebar.innerHTML = '<div class="sidebar-header">问问爬爬</div><div class="sidebar-body"></div>';
+      sidebar.innerHTML = '<div class="sidebar-header">爬爬</div><div class="sidebar-body"></div>';
       document.body.appendChild(sidebar);
       $('#minuteReload').click(function(){
         minuteReload();

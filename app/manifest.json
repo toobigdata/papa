@@ -1,9 +1,9 @@
 {
   "name": "爬爬",
   "short_name": "Papa",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "manifest_version": 2,
-  "description": "所见即所得的网络爬虫插件",
+  "description": "所见即所得的网络爬虫插件 toobigdata.com",
   "icons": {
     "16": "images/icon16.png",
     "48": "images/icon48.png",
