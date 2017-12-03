@@ -111,11 +111,12 @@ a:visited {
 }
 
 h1.topnav {
-  padding: 5px 10px;
-  color: #fff;
+  padding: 10px 10px;
+  background: #fff;
+  color: #4C6381;
   font-size: 18px;
   font-weight: bold;
-  background: #4C6381;
+  border-bottom: 1px solid #eee;
 }
 
 h1.title {
@@ -292,9 +293,9 @@ header ul li a:visited {
 }
 
 .option-area {
-  padding: 20px;
+  border-top: 1px solid #eee;
+  padding: 10px 20px;
   display: none;
-  background: #eee;
 }
 
 footer {
@@ -368,7 +369,7 @@ input#historyMax {
 .option-box {
   margin: 10px 0;
   padding: 10px;
-  border: 1px solid #13840d;
+  border: 1px dashed #eee;
 }
 
 .danger-area {
@@ -469,4 +470,15 @@ textarea#url-input {
 #source-list {
   padding-left: 35px;
   border-left: 5px solid #eee;
+}
+
+.popup-footer {
+  border-top: 1px solid #eee;
+  padding: 10px;
+  text-align: right;
+}
+
+.popup-footer .btn {
+  background: #fff;
+  color: #666;
 }

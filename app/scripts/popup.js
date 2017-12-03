@@ -3,10 +3,8 @@
 $(function(){
   loadConfig();
 	render();
-  /*
   var manifest = chrome.runtime.getManifest();
   document.getElementById('version').innerText = manifest.version; 
-  */
 	if(localStorage.papa_switch == 'true'){
 		console.log('true');
 		document.querySelector('#papa_switch').checked = true;

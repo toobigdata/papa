@@ -11,6 +11,11 @@ function loadConfig(){
   var isWechatAutoClose = localStorage.options_wechatAutoClose === 'true';
   var wechatHistoryMax = localStorage.options_wechatHistoryMax || 10;
   document.getElementById('phone').value = phone;
+
+  if(phone.length == 11){
+    document.getElementById('phone').disabled = true;
+  }
+
   document.getElementById('input_wechatAutoClose').checked = isWechatAutoClose;
   document.getElementById('input_wechatHistoryMax').value = wechatHistoryMax;
   document.getElementById('input_wechatHistoryMax_show').innerText = wechatHistoryMax;
