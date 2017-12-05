@@ -6,16 +6,13 @@
   crawl();
 
 
-  /*
   addBtn('jz_crawl', '翻页爬', function(){
-		var intervalId = setInterval(function(){
-			if(crawlNextPage() < 0){
-        clearInterval(intervalId);
-        notify('数据抓取完毕');
-      }
-		}, 10*1000);
+		localStorage.crawlNextPage = 'true';
   });
-  */
+
+  addBtn('jz_crawl_stop', '停止', function(){
+		localStorage.crawlNextPage = 'false';
+  });
 
   /*
   addBtn('jz_crawl', '翻页爬', function(){
@@ -61,9 +58,12 @@ function getData(){
       message.subject = document.querySelector('#' + domid + ' .thread-subject').innerText;
       message.buyer_name = document.querySelector('#' + domid + ' .thread-buyername').innerText;
       message.buyer_email = document.querySelector('#' + domid + ' .a-size-small.hidden').innerText;
-      if(message.subject.indexOf('Order information from Amazon') > -1){
-        message.order_id = message.subject.replace('Order information from Amazon seller MobvoiUS (Order: ', '').replace(')', '');
-      }
+
+      var pattern =  /(.*)\(Order: ([0-9\-]+)\)(.*)/;
+      var group = message.subject.match(pattern);
+      if(group && group[2]) message.order_id = group[2];
+
+
 
       return message;
 
@@ -87,10 +87,12 @@ function crawlNextPage(){
 	if(btn == null){
     return -1;
   } else {
-    btn.click();
-    setTimeout(function(){
-      crawl();
-      return 1;
-    }, 5*1000);
+		if(localStorage.crawlNextPage == 'true'){
+			btn.click();
+			setTimeout(function(){
+				crawl();
+				return 1;
+			}, 5*1000);
+		}
   }
 }
