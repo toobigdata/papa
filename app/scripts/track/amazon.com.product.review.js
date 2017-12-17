@@ -44,7 +44,6 @@ function crawl(){
     review.text = item.querySelector('.review-text').innerText;
     review.comment_num = item.querySelector('.review-comment-total').innerText;
     if(item.querySelector('.cr-vote .review-votes')) review.vote = item.querySelector('.cr-vote .review-votes').innerText;
-    console.log(review);
     return review;
   });
 

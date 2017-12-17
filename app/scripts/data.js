@@ -23,7 +23,7 @@ $(function(){
 
   $('table').DataTable({
     'paging': true,
-    "pageLength": 200,
+    "pageLength": 100,
     'order': [[ 0, 'desc' ]],
     'buttons': [
         'excelHtml5'

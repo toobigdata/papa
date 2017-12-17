@@ -95,6 +95,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     var source = message.msgtype;
 
     var data = message.content;
+    if(!data) return;
     var stat_ts = new Date();
     data.ts = stat_ts;
 

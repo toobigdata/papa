@@ -41,6 +41,13 @@ var config = {
       head: ['采集时间', '房源标题', '价格', '位置'],
       field: ['ts', 'title', 'price', 'location']
     },
+    'jd.product.search': {
+      display_name: '京东搜索',
+      url_re: ['.*search.jd.com\/Search.+'],
+      list: 'product_list',
+      head: ['采集时间', '商品名', '价格', '评论数', '店铺', '关键词', '页码', '排名'],
+      field: ['ts', 'name', 'price', 'commentCount', 'shop', 'keyword', 'page', 'rank']
+    },
     'jd.product': {
       display_name: '京东商品',
       url_re: ['.*item.jd.com\/.+\.html'],
