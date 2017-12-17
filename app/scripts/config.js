@@ -114,11 +114,11 @@ var config = {
       field: ['ts', 'nickname', 'follow_num', 'fan_num', 'status_num', 'info']
     },
     'weibo.user.follow': {
-      display_name: '微博用户关注',
+      display_name: '微博用户关系',
       url_re: ['.*weibo.com\/p\/.*\/follow.*'],
       list: 'follow_list',
-      head: ['采集时间', '微博ID', '昵称', '性别', '关注数', '粉丝数', '微博数', '地址', '简介'],
-      field: ['ts', 'uid', 'nickname', 'gender', 'follow_num', 'fan_num', 'status_num', 'address', 'intro']
+      head: ['采集时间', 'fromID', '关系', 'toID', '昵称', '性别', '关注数', '粉丝数', '微博数', '地址', '简介'],
+      field: ['ts', 'oid', 'relation', 'uid', 'nickname', 'gender', 'follow_num', 'fan_num', 'status_num', 'address', 'intro']
     },
 }
 
