@@ -4,6 +4,7 @@
   'use strict';
   
   setTimeout(function(){
+    location.href = location.href;
     crawl();
   }, 3*1000);
 

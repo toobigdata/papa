@@ -19,8 +19,6 @@ $(function(){
   renderBasic(source);
 
 
-
-
   $('table').DataTable({
     'paging': true,
     "pageLength": 100,
@@ -56,7 +54,7 @@ if (sync === 'true') {
 }
 
 
-function renderBasic(source) {
+function renderBasic(source){
   var key = source;
   //console.log(key);
 
@@ -81,6 +79,26 @@ function renderBasic(source) {
     tr += '</tr>';
     document.getElementById('basic_body').innerHTML += tr;
   }
+  wordFrequency(list, 'text');
+}
+
+function wordFrequency(list, field){
+
+  var dic = {};
+
+  for(var i=0;i<list.length;i++){
+    var item = list[i];
+    var content = item[field];
+    //var wordArray = content.replace(/[,'"\(\)\-]/g, ' ').split(' ');
+    var wordArray = content.replace(/([\[\]\,.?"\(\)+_*\/\\&\$#^@!~`\n\-:]|(?!\s)'\s+|\s+'(?!\s)|(?!\s)"\s+|\s+"(?!\s))/g, ' ').split(' ');
+    //console.log(wordArray);
+    for(var j=0;j<wordArray.length;j++){
+      if(dic[wordArray[j]]) dic[wordArray[j]] += 1;
+      else dic[wordArray[j]] = 1;
+    }
+  }
+
+  console.log(dic);
 }
 
 function renderDetail(source) {
