@@ -256,6 +256,7 @@ function getStorage(key){
 }
 
 function appendStorage(key, data){
+  if(localStorage.papa_local == 'false') return;
   console.log(key);
   console.log(data);
   console.log(getStorage(key));

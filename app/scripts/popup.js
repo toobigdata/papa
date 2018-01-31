@@ -11,6 +11,11 @@ $(function(){
 		document.querySelector('#papa_switch_status').innerText = '已开启';
 	}
 
+	if(localStorage.papa_local == 'true'){
+		console.log('true');
+		document.querySelector('#papa_local').checked = true;
+		document.querySelector('#papa_local_status').innerText = '已开启';
+	}
 
   //render(); 
   $('a#show-options').click(function(){
@@ -18,7 +23,6 @@ $(function(){
   });
 });
 
-// 关闭所有微信文章标签页
 document.addEventListener('DOMContentLoaded', function () {
   document.querySelector('#closeAllWxTabs').addEventListener('click', closeAllWxTabs);
 
@@ -30,6 +34,17 @@ document.addEventListener('DOMContentLoaded', function () {
 		} else {
 			localStorage.papa_switch = 'false';
 			document.querySelector('#papa_switch_status').innerText = '已关闭';
+		}
+	});
+
+	$('#papa_local').change(function () {
+		console.log(document.querySelector('#papa_local').checked);
+		if(document.querySelector('#papa_local').checked == true){
+			localStorage.papa_local = 'true';
+			document.querySelector('#papa_local_status').innerText = '已开启';
+		} else {
+			localStorage.papa_local = 'false';
+			document.querySelector('#papa_local_status').innerText = '已关闭';
 		}
 	});
 });

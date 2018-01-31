@@ -1,7 +1,7 @@
 {
   "name": "爬爬",
   "short_name": "Papa",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "manifest_version": 2,
   "description": "所见即所得的可定制网络爬虫插件",
   "icons": {

@@ -14,14 +14,22 @@
       <div id="alert" class="hidden"></div>
 
       <div class="shortcuts">
-        <p class="title">爬数开关</p>
-        <input type="checkbox" id="papa_switch" /> <label id="papa_switch_status">未开启</label>
+        <p class="title">爬数开关（开启后可爬数）</p>
+        <input type="checkbox" id="papa_switch" /> <label id="papa_switch_status">已关闭</label>
+      </div>
+
+      <div class="shortcuts">
+        <p class="title">本地存储（开启后可在本地看数据，会影响网页速度）</p>
+        <input type="checkbox" id="papa_local" /> <label id="papa_local_status">已关闭</label>
       </div>
 
       <div class="shortcuts">
         <p class="title">快捷入口</p>
         <a class="btn" href="mydata.html" id="mydata" target="_blank" title="查看我的最近数据">
-          数据
+          本地数据
+        </a>
+        <a class="btn" href="http://app.toobigdata.com" id="tbd" target="_blank" title="查看在线数据">
+          在线数据
         </a>
         <a class="btn" href="bookmarks.html" id="help" target="_blank" title="收藏夹">
           书签
@@ -46,7 +54,7 @@
         <p class="title">设置</p>
         <div class="option-box">
           <p>TooBigData 平台帐号（<a href="help.html" target="_blank">我要订阅</a>）</p>
-          <input style="width:100%" placeholder="即订阅会员数据的手机号" type="text" id="phone" checked />
+          <input style="width:100%" placeholder="即用户邮箱" type="text" id="phone" checked />
         </div>
         <div class="option-box">
           <p>微信设置</p>

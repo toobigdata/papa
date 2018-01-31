@@ -7,6 +7,7 @@ var phone, isWechatAutoClose, wechatHistoryMax;
 isWechatAutoClose = localStorage.options_wechatAutoClose || 'false';
 
 localStorage.papa_switch = localStorage.papa_switch || 'true';
+localStorage.papa_local = localStorage.papa_local || 'true';
 localStorage.options_wechatAutoClose = localStorage.options_wechatAutoClose || 'false';
 localStorage.phone = localStorage.phone || '';
 localStorage.url = localStorage.url || '';
