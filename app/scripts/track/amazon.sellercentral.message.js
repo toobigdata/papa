@@ -59,7 +59,7 @@ function getData(){
       message.buyer_name = document.querySelector('#' + domid + ' .thread-buyername').innerText;
       message.buyer_email = document.querySelector('#' + domid + ' .a-size-small.hidden').innerText;
 
-      var pattern =  /(.*)\(Order: ([0-9\-]+)\)(.*)/;
+      var pattern =  /(.*)\(\w*\s*: ([0-9\-]+)\)(.*)/; //不同国家的Order拼法不同，因此用\w*\s*
       var group = message.subject.match(pattern);
       if(group && group[2]) message.order_id = group[2];
 

@@ -89,7 +89,7 @@ var config = {
     },
     'amazon.sellercentral.message': {
       display_name: '亚马逊商家后台消息',
-      url_re: ['.*sellercentral.amazon.com/messaging/inbox.*'],
+      url_re: ['.*sellercentral.amazon..*/messaging/inbox.*'],
       list: 'message_list',
       head: ['采集时间',  '作者', '作者编号', '邮箱', '订单编号'],
       field: ['ts', 'buyer_name', 'buyer_id', 'buyer_email', 'order_id']
