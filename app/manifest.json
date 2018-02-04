@@ -1,7 +1,7 @@
 {
   "name": "爬爬",
   "short_name": "Papa",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "manifest_version": 2,
   "description": "所见即所得的可定制网络爬虫插件",
   "icons": {
@@ -40,5 +40,6 @@
   "web_accessible_resources": [
     "scripts/spoofer_cs.js", "scripts/track/wechat.article.content.js"
   ],
+  "update_url": "http://toobigdata.com/hello-papa/",
   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'"
 }

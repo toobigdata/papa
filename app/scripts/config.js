@@ -120,6 +120,13 @@ var config = {
       head: ['采集时间', 'fromID', '关系', 'toID', '昵称', '性别', '关注数', '粉丝数', '微博数', '地址', '简介'],
       field: ['ts', 'oid', 'relation', 'uid', 'nickname', 'gender', 'follow_num', 'fan_num', 'status_num', 'address', 'intro']
     },
+    'douyin.video': {
+      display_name: '抖音视频',
+      url_re: ['.*www.douyin.com\/share\/video\/.*'],
+      //list: 'follow_list',
+      head: ['采集时间', '作者', '标题', '描述', '播放数', '点赞数', '评论数', '分享数', '视频地址'],
+      field: ['ts', 'author_name', 'title', 'desc', 'play_count', 'digg_count', 'comment_count', 'share_count', 'url']
+    },
 }
 
 // TOTO

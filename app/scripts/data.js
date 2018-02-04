@@ -79,7 +79,7 @@ function renderBasic(source){
     tr += '</tr>';
     document.getElementById('basic_body').innerHTML += tr;
   }
-  wordFrequency(list, 'text');
+  //wordFrequency(list, 'text');
 }
 
 function wordFrequency(list, field){

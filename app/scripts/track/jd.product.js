@@ -13,16 +13,29 @@
 		}, 5*1000);
   });
 
+
 })();
 
 function crawl(){
 
   var data = {};
   data.url = location.href;
-  data.title = document.querySelector('.sku-name').innerText;
+  data.title = document.querySelector('.sku-name').innerText.replace(/\s/g, '');
   data.price = document.querySelector('.price').innerText;
   data.commentCount = document.querySelector('.comment-count .count')?document.querySelector('.comment-count .count').innerText:'';
+  data.image = document.querySelector('#preview img').src;
+  data.des = document.querySelector('.news').innerText.replace(/\s/g, '');
   console.log(data);
+
+  var jianhuo_url = 'http://jianhuo.toobigdata.com/?title=' + encodeURIComponent(data.title) + '&des=' + encodeURIComponent(data.des) + '&imgurl=' + data.image + '&link=' + encodeURIComponent(data.url);
+  console.log(jianhuo_url);
+
+
+  addBtn('jianhuo', '荐货', function(){
+    location.href = jianhuo_url;
+  });
+
+
 
   chrome.runtime.sendMessage({ 'msgtype': 'jd.product', 'content': data}, function (response) {
     console.log(response);

@@ -26,9 +26,11 @@ function crawl(){
   data.create_time = document.querySelector('.article-sub > span:nth-last-child(1)').innerText;
   //console.log(data);
 
-  chrome.runtime.sendMessage({ 'msgtype': 'toutiao_article', 'content': data}, function (response) {
-    //console.log(response);
+  /*
+  chrome.runtime.sendMessage({ 'msgtype': 'toutiao.article', 'content': data}, function (response) {
+    console.log(response);
   });
+  */
 
 }
 
