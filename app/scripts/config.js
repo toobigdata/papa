@@ -122,7 +122,7 @@ var config = {
     },
     'douyin.video': {
       display_name: '抖音视频',
-      url_re: ['.*www.douyin.com\/share\/video\/.*'],
+      url_re: ['.*www.douyin.com\/share\/video\/.*', '.*www.amemv.com\/share\/video\/.*'],
       //list: 'follow_list',
       head: ['采集时间', '作者', '标题', '描述', '播放数', '点赞数', '评论数', '分享数', '视频地址'],
       field: ['ts', 'author_name', 'title', 'desc', 'play_count', 'digg_count', 'comment_count', 'share_count', 'url']

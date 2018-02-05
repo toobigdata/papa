@@ -27,7 +27,7 @@ function crawl(){
   data.commentCount = document.querySelector('.tm-ind-reviewCount .tm-count')?document.querySelector('.tm-ind-reviewCount .tm-count').innerText:'';
   console.log(data);
 
-  var jianhuo_url = 'http://jianhuo.toobigdata.com/?title=' + encodeURIComponent(data.title) + '&des=' + encodeURIComponent(data.des) + '&imgurl=' + data.image + '&link=' + encodeURIComponent(data.url);
+  var jianhuo_url = 'http://jianhuo.toobigdata.com/?title=' + encodeURIComponent(data.title) + '&des=' + encodeURIComponent(data.des) + '&price=' +data.price + '&imgurl=' + data.image + '&link=' + encodeURIComponent(data.url);
   console.log(jianhuo_url);
 
 
