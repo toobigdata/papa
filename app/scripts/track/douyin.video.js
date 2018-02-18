@@ -34,6 +34,17 @@ function crawl(){
 
   console.log(data);
 
+  var html = '<div class="desc">播放数: ' + data.play_count;
+  html += '<br>点赞数: ' + data.digg_count;
+  html += '<br>评论数: ' + data.comment_count;
+  html += '<br>分享数: ' + data.share_count;
+  html += '<br><a href="' + data.video_url + '">视频地址</a><br> ';
+  html += '<br><br>--由<a href="http://app.toobigdata.com/">爬爬</a>提供数据<br> ';
+  html += '</div>';
+
+  document.querySelector('.video-info').innerHTML += html;
+
+
   chrome.runtime.sendMessage({ 'msgtype': 'douyin.video', 'content': data}, function (response) {
     console.log(response);
   });

@@ -131,8 +131,8 @@ var config = {
       display_name: '火山小视频',
       url_re: ['.*reflow.huoshan.com\/share\/item\/.*'],
       //list: 'follow_list',
-      head: ['采集时间', '作者', '标题', '描述', '播放数', '点赞数', '评论数', '分享数', '视频地址'],
-      field: ['ts', 'author_name', 'title', 'desc', 'play_count', 'digg_count', 'comment_count', 'share_count', 'url']
+      head: ['采集时间', '作者', '标题', '播放数', '点赞数', 'Ticket', '分享数', '视频地址'],
+      field: ['ts', 'author_name', 'title', 'play_count', 'digg_count', 'ticket', 'share_count', 'url']
     },
 }
 
