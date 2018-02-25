@@ -1,6 +1,6 @@
 'use strict'
 
-console.log('start');
+//console.log('start');
 
 
 // 全局设置

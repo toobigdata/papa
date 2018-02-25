@@ -11,6 +11,12 @@ TooBigData 是一个帮助用户采集数据的 Chrome 插件，可在 Chrome �
 
 ## 演示
 
+数据网站
+
+http://app.toobigdata.com/
+
+使用视频
+
 https://www.youtube.com/watch?v=NCUJCnFZrAw
 
 https://www.youtube.com/watch?v=7LY7CDP4k34
@@ -35,10 +41,25 @@ https://www.youtube.com/watch?v=7LY7CDP4k34
 - 链家租房数据
 - 我爱我家租房数据
 - 京东商品
+- 京东商品评论
+- 淘宝商品
+- 天猫商品
+- 天猫商品评论
 - 亚马逊商品
 - 亚马逊商品评论
 - Kickstarter 评论
 - Kickstarter 用户
 - 微博用户信息
 - 微博用户关注
-- 更多数据源还在增加中...
+- 抖音小视频
+- 火山小视频
+
+
+## 自定义
+
+要添加更多的数据源，可通过以下方式完成
+
+1. 修改 app/scripts/config.js，添加数据源定义
+2. 在 app/scripts/track/ 目录下，添加对应的采集脚本
+
+如果想自定义接收数据的网关，可修改 `app/scripts/background.js` 中的 `data\_upload\_url` 变量
