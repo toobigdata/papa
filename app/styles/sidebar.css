@@ -6,7 +6,7 @@
   border: 1px solid rgb(76, 99, 129);
   //border-top-left-radius: 15px !important;
   //border-bottom-left-radius: 15px !important;
-  z-index: 9999999;
+  z-index: 999999999;
 }
 
 .sidebar-header {

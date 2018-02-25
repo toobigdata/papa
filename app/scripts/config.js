@@ -61,6 +61,12 @@ var config = {
       head: ['采集时间', '商品名', '作者', '内容'],
       field: ['ts', 'referenceName', 'nickname', 'content']
     },
+    'taobao.product': {
+      display_name: '淘宝商品',
+      url_re: ['.*item.taobao.com\/item\.htm.*'],
+      head: ['采集时间', '商品名', '价格', '评论数'],
+      field: ['ts', 'title', 'price', 'commentCount']
+    },
     'tmall.product': {
       display_name: '天猫商品',
       url_re: ['.*detail.tmall.com\/item\.htm.*'],
