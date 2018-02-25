@@ -21,7 +21,8 @@ function crawl(){
   var data = {};
   data.url = location.href;
   data.title = document.querySelector('.tb-detail-hd h1').innerText;
-  data.des = document.querySelector('.newp').innerText;
+  data.shopName = document.querySelector('#side-shop-info .name a').innerText;
+  //data.des = document.querySelector('.newp').innerText;
   data.image = document.getElementById('J_ImgBooth').src;
   data.price = document.querySelector('.tm-price').innerText;
   data.sellCount = document.querySelector('.tm-ind-sellCount .tm-count')?document.querySelector('.tm-ind-sellCount .tm-count').innerText:'';
