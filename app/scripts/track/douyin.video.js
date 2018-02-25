@@ -30,15 +30,21 @@ function crawl(){
   data.digg_count = d.statistics.digg_count;
   data.share_count = d.statistics.share_count;
   data.video_url = d.video.real_play_addr;
+  data.static_cover = d.video.cover.url_list[0];
   data.raw = d;
 
   console.log(data);
+
+  var card_desc = '播放量/' + data.play_count + ' 点赞数/' + data.digg_count;
+
+  var jianhuo_url = 'http://jianhuo.toobigdata.com/douyin.php?title=' + encodeURIComponent('你的好友 @' + data.author_name + ' 需要你的爱心 | ' + data.desc) + '&des=' + encodeURIComponent(card_desc) + '&imgurl=' + data.static_cover + '&link=' + encodeURIComponent(data.url);
 
   var html = '<div class="desc">播放数: ' + data.play_count;
   html += '<br>点赞数: ' + data.digg_count;
   html += '<br>评论数: ' + data.comment_count;
   html += '<br>分享数: ' + data.share_count;
   html += '<br><a href="' + data.video_url + '">视频地址</a><br> ';
+  html += '<br><a href="' + jianhuo_url + '">生成分享卡</a><br> ';
   html += '<br><br>--由<a href="http://app.toobigdata.com/">爬爬</a>提供数据<br> ';
   html += '</div>';
 

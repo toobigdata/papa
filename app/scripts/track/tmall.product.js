@@ -1,5 +1,6 @@
 (function() {
   'use strict';
+
   setTimeout(function(){
     crawl();
   }, 3*1000);
@@ -25,20 +26,21 @@ function crawl(){
   data.price = document.querySelector('.tm-price').innerText;
   data.sellCount = document.querySelector('.tm-ind-sellCount .tm-count')?document.querySelector('.tm-ind-sellCount .tm-count').innerText:'';
   data.commentCount = document.querySelector('.tm-ind-reviewCount .tm-count')?document.querySelector('.tm-ind-reviewCount .tm-count').innerText:'';
+  data.raw = getRaw();
+  data.id = JSON.parse(data.raw).itemDO.itemId;
+
   console.log(data);
 
   var jianhuo_url = 'http://jianhuo.toobigdata.com/?title=' + encodeURIComponent(data.title) + '&des=' + encodeURIComponent(data.des) + '&price=' +data.price + '&imgurl=' + data.image + '&link=' + encodeURIComponent(data.url);
   console.log(jianhuo_url);
 
-
   addBtn('jianhuo', '荐货', function(){
     location.href = jianhuo_url;
   });
-  /*
+
   chrome.runtime.sendMessage({ 'msgtype': 'tmall.product', 'content': data}, function (response) {
     console.log(response);
   });
-  */
 
 }
 
@@ -53,4 +55,19 @@ function crawlNextPage(){
   } else {
     return -1;
   }
+}
+
+/******************************************************************************
+ * 从当前页面内容中提取变量
+ *****************************************************************************/
+function getRaw() {
+  var content = document.body.innerHTML;
+  //var re = new RegExp('.*var ' + index + ' = \\[(.*)\\]');
+  var re = new RegExp('.*TShop.Setup\\(\n\\s+(.*)\n.*');
+  var a = content.match(re);
+  if (!a) return null;
+  var a = a[1];
+  if (!a) return null;
+  //console.log(a);
+  return a;
 }
