@@ -2,7 +2,10 @@
 
 console.log('start');
 
+
 // 全局设置
+var data_upload_url = 'http://pcsdpku.com/jz/index.php';
+
 var phone, isWechatAutoClose, wechatHistoryMax;
 isWechatAutoClose = localStorage.options_wechatAutoClose || 'false';
 
@@ -24,8 +27,7 @@ function sendtoServer(data, source) {
   var ts = new Date();
   var today = ts.getFullYear() + '-' + ('0' + (ts.getMonth() + 1)).slice(-2) + '-' + ('0' + ts.getDate()).slice(-2);
 
-  //var url = 'http://mobvoi-analytics-transfer.mobvoi.com/log/backend';
-  var url = 'http://pcsdpku.com/jz/index.php';
+  var url = data_upload_url;
 
 	$.ajax({
 			type: 'POST',
