@@ -24,7 +24,7 @@ $(function(){
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-  document.querySelector('#closeAllWxTabs').addEventListener('click', closeAllWxTabs);
+  //document.querySelector('#closeAllWxTabs').addEventListener('click', closeAllWxTabs);
 
 	$('#papa_switch').change(function () {
 		console.log(document.querySelector('#papa_switch').checked);

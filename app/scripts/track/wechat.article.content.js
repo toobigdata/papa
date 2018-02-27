@@ -7,6 +7,8 @@ var baseUrl = 'http://jianzhiim.com';
  *****************************************************************************/
 $(function () {
 
+
+
   var info = document.createElement('div');
   info.id = 'info';
   document.body.appendChild(info);
@@ -38,8 +40,8 @@ $(function () {
   a.user_name = getWxVar('user_name');
 
   // 记录文章基本属性
-  a.title = getWxVar('msg_title'); // 标题
-  a.author = getWxVar('nickname'); // 公众号名称
+  a.title = document.querySelector('.rich_media_title').innerText; // 标题
+  a.author = document.querySelector('#post-user').innerText; // 标题
   a.digest = getWxVar('msg_desc'); // 文章摘要，为作者手填或自动截取文章开头字符 
   a.cover = getWxVar('msg_cdn_url'); // 文章头图/封面
   a.oriUrl = getWxVar('msg_source_url'); // 原文链接
@@ -166,6 +168,15 @@ $(function () {
   chrome.runtime.sendMessage({ 'msgtype': 'wechat.article.content', 'content': a, 'detail': { 'appmsg_token': a.appmsg_token} }, function (response) {
     console.log(response);
   });
+
+
+
+
+  var profileLink = document.createElement('a');
+  profileLink.innerText = '+历史消息+';
+  profileLink.className = 'rich_media_meta rich_media_meta_link';
+  profileLink.href = location.href.replace('https://mp.weixin.qq.com/s?', 'https://mp.weixin.qq.com/mp/profile_ext?action=home&');
+  document.querySelector('#meta_content').appendChild(profileLink);
 
 });
 

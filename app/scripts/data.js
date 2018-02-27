@@ -2,7 +2,7 @@
 
 $(function(){
   init();
-	var source = getQuery(location.href, 'source') || 'wechat.article.content';
+	var source = getQuery(location.href, 'source') || 'douyin.video';
   document.querySelector('#source-name').innerText = config[source].display_name;
 
   for(var i in config){

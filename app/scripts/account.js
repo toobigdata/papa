@@ -14,6 +14,10 @@ var version = getQuery(location.href, 'version');
 var ascene = getQuery(location.href, 'ascene');
 var appmsg_token = getQuery(location.href, 'appmsg_token');
 
+
+// https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MjM5ODM4NzM5Mg==&scene=123&uin=MTIwMTIyMzU1&key=f55c19130053f5f53686b7f09e581946fd436612c32ea6c38d280aa5e5fdc87a6d1c1b76f24d72c62ce58fc43c7e52799ec3a52fd61316d2c504e511d4b3f4fa43c6eb5952fc3732e9b911b3a9e4fbd3&devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.13.3+build(17D47)&version=12020810&lang=zh_CN&nettype=WIFI&a8scene=0&fontScale=100&pass_ticket=7cMXLTYeaYCsDNA8swvgnu7FRBdSMRmA%2FJkoSBhIFzc%3D
+// https://mp.weixin.qq.com/mp/profile_ext?action=getmsg&__biz=MjM5ODM4NzM5Mg==&f=json&offset=31&count=10&is_ok=1&scene=123&uin=MTIwMTIyMzU1&key=da75b846f73de59a5be2fd87e3e45709273aecd49562019633878f85ffe097da46ed68a6ad87bc4f34a574754e66b6a13917fdd3fe3b5f6bff00942063c2c2e5355e72f34a46d4251d55ce35da9c2360&pass_ticket=7cMXLTYeaYCsDNA8swvgnu7FRBdSMRmA%2FJkoSBhIFzc%3D&wxtoken=&appmsg_token=945_rZShB8%252BSXu0Y7%252F0D85NN5RMjZnFBj3YEOYQHGg~~&x5=0&f=json
+
 var q = {
   'action'         : 'getmsg',
   '__biz'          : getQuery(inputUrl, '__biz'),      // * Unique id of an Offical Account
@@ -22,16 +26,15 @@ var q = {
   //'frommsgid'      : '',
   'count'          : 10,
   'is_ok'          : 1,
-  'scene'          : 124,
-  'uin'            : 777,
-  'key'            : 777,
-  'pass_ticket'    : '',
+  'scene'          : 123,
+  'uin'            : getQuery(inputUrl, 'uin'),        // Unique id of a Wechat User
+  'key'            : getQuery(inputUrl, 'key'),
+  'pass_ticket'    : getQuery(inputUrl, 'pass_ticket'),
+  //'uin'            : 777,
+  //'key'            : 777,
   'wxtoken'        : '',
   'appmsg_token'   : appmsg_token,
   'x5'             : 0
-  //'uin'            : getQuery(inputUrl, 'uin'),        // * Unique id of a Wechat User
-  //'key'            : getQuery(inputUrl, 'key'),
-  //'pass_ticket'    : getQuery(inputUrl, 'pass_ticket')
 }
 
 // 获取公众号历史文章
@@ -53,8 +56,8 @@ function getData(offset){
   }
 
   var apiurl = apibase + '\?' + queryString;
-  apiurl += ' HTTP/1.1';
-  //console.log(apiurl);
+  //apiurl += ' HTTP/1.1';
+  console.log(apiurl);
 
   var historyHR = createXmlHttpRequest();
   historyHR.open('GET', apiurl, false);
@@ -66,7 +69,7 @@ function getData(offset){
   currentCount ++;
   var a =  JSON.parse(historyHR.response);
   //console.log('--------------');
-  //console.log(a);
+  console.log(a);
 
   var list = a.general_msg_list;
   if(!list){
