@@ -1,43 +1,37 @@
 var config = {
     'wechat.article.content': {
-      display_name: '微信文章数据',
+      display_name: '微信文章',
       url_re: ['.*mp.weixin.qq.com\/[s|mp\/]+.*'],
       head: ['采集时间', '公众号', '文章标题', '图片数', '视频数', '音乐数', '语音数', '投票数', '内链数'],
       field: ['ts', 'author', 'title', 'imageCount', 'videoCount', 'musicCount', 'voiceCount', 'voteCount', 'linkCount']
     },
-    'taobao.zhongchou': {
-      display_name: '淘宝众筹数据',
-      url_re: ['.*izhongchou.taobao.com\/dreamdetail.htm.*', '.*hi.taobao.com\/market\/hi\/deramdetail.php.*'],
-      head: ['采集时间', '店铺', '众筹标题', '认筹人数', '认筹金额', '目标金额', '完成比例(%)'],
-      field: ['ts', 'nick', 'name', 'support_person', 'curr_money', 'target_money', 'finish_per']
-    },
     'toutiao.article': {
-      display_name: '今日头条文章数据',
+      display_name: '今日头条文章',
       url_re: ['.*www.toutiao.com\/[a-z]+[0-9a-z]*\/'],
       head: ['采集时间', '头条号', '文章标题', '发布时间', '评论数'],
       field: ['ts', 'author', 'title', 'create_time', 'comment_num']
     },
     'douban.movie': {
-      display_name: '豆瓣电影数据',
+      display_name: '豆瓣电影',
       url_re: ['.*movie.douban.com\/subject\/.*'],
       head: ['采集时间', '片名', '评价人数', '豆瓣评分', '影评数', '短评数', '讨论数', '提问数'],
       field: ['ts', 'name', 'rating_people', 'score', 'commentCount', 'short_commentCount', 'discussCount', 'questionCount']
     },
     'dianping.shop': {
-      display_name: '大众点评数据',
+      display_name: '大众点评',
       url_re: ['.*www.dianping.com\/shop\/.*'],
       head: ['采集时间', '店名', '电话', '人均消费（元）', '口味评分', '环境评分', '服务评分'],
       field: ['ts', 'shop_name', 'tel', 'avg_price', 'taste_score', 'environment_score', 'service_score']
     },
     'lianjia.zufang': {
-      display_name: '链家租房数据',
+      display_name: '链家租房',
       url_re: ['.*lianjia.com\/zufang\/.+\.html'],
       head: ['采集时间', '房源标题', '价格', '单位', '装修', '位置'],
       field: ['ts', 'title', 'price', 'price_unit', 'decoration', 'location']
     },
     'woaiwojia.zufang': {
-      display_name: '我爱我家租房数据',
-      url_re: ['.*5i5j.com\/rent\/.+'],
+      display_name: '我爱我家租房',
+      url_re: ['.*5i5j.com\/zufang\/.+'],
       head: ['采集时间', '房源标题', '价格', '位置'],
       field: ['ts', 'title', 'price', 'location']
     },
@@ -66,6 +60,12 @@ var config = {
       url_re: ['.*item.taobao.com\/item\.htm.*'],
       head: ['采集时间', '商品名', '价格', '评论数'],
       field: ['ts', 'title', 'price', 'commentCount']
+    },
+    'taobao.zhongchou': {
+      display_name: '淘宝众筹',
+      url_re: ['.*izhongchou.taobao.com\/dreamdetail.htm.*', '.*hi.taobao.com\/market\/hi\/deramdetail.php.*'],
+      head: ['采集时间', '店铺', '众筹标题', '认筹人数', '认筹金额', '目标金额', '完成比例(%)'],
+      field: ['ts', 'nick', 'name', 'support_person', 'curr_money', 'target_money', 'finish_per']
     },
     'tmall.product': {
       display_name: '天猫商品',

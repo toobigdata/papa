@@ -10,12 +10,14 @@ function crawl(){
   var data = {};
   data.url = location.href;
   data.title = document.querySelector('h1.house-tit').innerText;
-  data.location = document.querySelector('.w-full.path .main').innerText.replace(/\s+>\s+当前房源/, '').replace(/租房/g, '');
-  data.price = document.querySelector('.house-info .font-price').innerText;
-  data.detail = document.querySelector('.house-info-2').innerText;
+  data.location = document.querySelector('body > div.main.container > div.details-view.clear > div.content.fr > div.zushous > ul > li:nth-child(6)').innerText;
+  data.price = document.querySelector('body > div.main.container > div.details-view.clear > div.content.fr > div.housesty > div.jlyou.fl > div > p.jlinfo').innerText;
+  data.detail = document.querySelector('.infocontent .fytese').innerText;
+  data.rooms = document.querySelector('body > div.main.container > div.details-view.clear > div.content.fr > div.housesty > div:nth-child(2) > div > p.jlinfo.font18').innerText;
+  data.area = document.querySelector('body > div.main.container > div.details-view.clear > div.content.fr > div.housesty > div:nth-child(3) > div > p.jlinfo').innerText;
   data.broker = {};
-  data.broker.name = document.querySelector('.house-broker .house-broker-info .mr-t').innerText;
-  data.broker.phone = document.querySelector('.house-broker .house-broker-info .house-broker-tel').innerText;
+  data.broker.name = document.querySelector('.daikansty .daikcon h3').innerText;
+  data.broker.phone = document.querySelector('.daikansty .daikcon label').innerText;
 
   console.log(data);
 
