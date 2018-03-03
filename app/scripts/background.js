@@ -198,12 +198,14 @@ function getSource(url) {
 chrome.webRequest.onBeforeRequest.addListener(
   function(details) {
     getComments(details.url);
+    console.log(details.url);
     return {redirectUrl: chrome.extension.getURL("returnjs.js")};
   },
   {
     urls: [
         "*://rate.tmall.com/list_detail_rate.htm*",
-        "*://club.jd.com/comment/productPageComments.action*"
+        "*://club.jd.com/comment/productPageComments.action*",
+        "*://sclub.jd.com/comment/productPageComments.action*"
     ],
     types: ["script"]
   },

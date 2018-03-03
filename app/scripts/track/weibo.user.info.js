@@ -5,6 +5,10 @@
     crawl();
   }, 3*1000);
 
+  addBtn('help', '文档', function(){
+    location.href = 'http://toobigdata.com/papa-help-weibo-user/';
+  });
+
 })();
 
 function crawl(){
