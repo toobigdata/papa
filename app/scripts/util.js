@@ -261,6 +261,9 @@ function appendStorage(key, data){
   console.log(data);
   console.log(getStorage(key));
   var list = getStorage(key);
+  if(data.raw){
+    delete data.raw;
+  }
   list.push(data);
   console.log(list);
   localStorage[key] = JSON.stringify(list);

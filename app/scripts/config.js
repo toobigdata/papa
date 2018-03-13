@@ -133,6 +133,20 @@ var config = {
       head: ['采集时间', '作者', '标题', '描述', '播放数', '点赞数', '评论数', '分享数', '视频地址'],
       field: ['ts', 'author_name', 'title', 'desc', 'play_count', 'digg_count', 'comment_count', 'share_count', 'url']
     },
+    'douyin.user': {
+      display_name: '抖音用户',
+      url_re: ['.*www.douyin.com\/share\/user\/.*', '.*www.amemv.com\/share\/user\/.*'],
+      //list: 'follow_list',
+      head: ['采集时间', '作者', '抖音号', '粉丝数', '获赞数', '视频数'],
+      field: ['ts', 'nickname', 'short_id', 'follower_count', 'total_favorited', 'aweme_count' ]
+    },
+    'kuaishou.video': {
+      display_name: '快手视频',
+      url_re: ['.*www.kuaishou.com\/photo\/.+\/.+'],
+      //list: 'follow_list',
+      head: ['采集时间', '作者', '标题', '视频ID', '视频标题', '播放数', '点赞数', '评论数'],
+      field: ['ts', 'userName', 'title', 'photoId', 'caption', 'viewCount', 'likeCount', 'commentCount']
+    },
     'huoshan.video': {
       display_name: '火山小视频',
       url_re: ['.*reflow.huoshan.com\/share\/item\/.*'],

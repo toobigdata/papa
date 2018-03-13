@@ -1,7 +1,7 @@
 {
   "name": "爬爬",
   "short_name": "Papa",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "manifest_version": 2,
   "description": "所见即所得的数据爬虫，每个人的数据助手",
   "icons": {
