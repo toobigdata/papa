@@ -261,8 +261,11 @@ function appendStorage(key, data){
   console.log(data);
   console.log(getStorage(key));
   var list = getStorage(key);
-  if(data.raw){
+  if(data.raw){ //删除原始数据
     delete data.raw;
+  }
+  if(data.photos){ //删除快手视频列表
+    delete data.photos;
   }
   list.push(data);
   console.log(list);

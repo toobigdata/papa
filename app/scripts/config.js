@@ -147,6 +147,13 @@ var config = {
       head: ['采集时间', '作者', '标题', '视频ID', '视频标题', '播放数', '点赞数', '评论数'],
       field: ['ts', 'userName', 'title', 'photoId', 'caption', 'viewCount', 'likeCount', 'commentCount']
     },
+    'kuaishou.user': {
+      display_name: '快手用户',
+      url_re: ['.*kuaishou.com\/user\/.*'],
+      //list: 'follow_list',
+      head: ['采集时间', '作者', '快手ID', '粉丝数', '关注数', '视频数'],
+      field: ['ts', 'user_name', 'user_id', 'follower_count', 'following_count', 'photo_count' ]
+    },
     'huoshan.video': {
       display_name: '火山小视频',
       url_re: ['.*reflow.huoshan.com\/share\/item\/.*'],

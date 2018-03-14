@@ -4,7 +4,7 @@
 
 
 function notify(text){
-  notie.alert({ text: text, time: 3});
+  notie.alert({ text: text, time: 5});
 }
 
 function addBtn(id, text, func){
