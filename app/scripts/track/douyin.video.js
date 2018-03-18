@@ -50,7 +50,6 @@ function crawl(){
 
   document.querySelector('.video-info').innerHTML += html;
 
-
   chrome.runtime.sendMessage({ 'msgtype': 'douyin.video', 'content': data}, function (response) {
     console.log(response);
   });

@@ -26,6 +26,7 @@ function crawl(){
   data.banner_url = document.querySelector('.user_profile_hd img.banner').src;
   data.follower_count = document.querySelector('.fans_follows .fans').innerText.replace(' 粉丝', '');
   data.following_count = document.querySelector('.fans_follows .follows').innerText.replace(' 关注', '');
+  data.photo_count = 0;
   if(document.querySelector('.user_photos_hd.count')){
     data.photo_count = document.querySelector('.user_photos_hd.count').innerText.replace(' 作品', '');
   }
@@ -33,9 +34,12 @@ function crawl(){
     data.raw = {};
     data.raw.photos = Array.from(document.querySelectorAll('.photos li a')).map(function(d){return d.href});
   }
-  if(document.querySelector('.btn.btn_follow._download')){
-    data.user_id =  document.querySelector('.btn.btn_follow._download').dataset.schemeUrl.replace('kwai://profile/', '');
-  }
+
+  data.user_id = location.href.split('/')[4];
+  console.log(data.user_id);
+  var next_id = parseInt(data.user_id) + 1;
+  var next_url = 'http://kuaishou.com/user/' + next_id;
+    // 自动爬数
   
   console.log(data);
 
@@ -43,6 +47,12 @@ function crawl(){
   chrome.runtime.sendMessage({ 'msgtype': 'kuaishou.user', 'content': data}, function (response) {
     console.log(response);
   });
+
+  if(next_url){
+    setTimeout(function(){
+      location.href = next_url;
+    }, 1*1000);
+  }
 
 }
 

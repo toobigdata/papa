@@ -149,7 +149,7 @@ var config = {
     },
     'kuaishou.user': {
       display_name: '快手用户',
-      url_re: ['.*kuaishou.com\/user\/.*'],
+      url_re: ['.*kuaishou.com\/user\/.*', '.*aomen.s.gifshow.com\/user\/.*'],
       //list: 'follow_list',
       head: ['采集时间', '作者', '快手ID', '粉丝数', '关注数', '视频数'],
       field: ['ts', 'user_name', 'user_id', 'follower_count', 'following_count', 'photo_count' ]
