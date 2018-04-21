@@ -201,7 +201,7 @@ function getSource(url) {
   return 0;
 }
 
-// 监听发送请求
+// 监听发送请求 天猫京东评论
 chrome.webRequest.onBeforeRequest.addListener(
   function(details) {
     getComments(details.url);
@@ -219,6 +219,32 @@ chrome.webRequest.onBeforeRequest.addListener(
   []
 );
 
+// 监听发送请求 抖音用户页视频列表
+chrome.webRequest.onCompleted.addListener(
+  function(details) {
+
+    /*
+    console.log('---------------');
+    console.log(details);
+    console.log(details.url);
+    console.log(details.url.indexOf("do_not"));
+    */
+
+		if(localStorage.douyin_user_post && localStorage.douyin_user_post == details.url) return {redirectUrl: chrome.extension.getURL("returnjs.js")};
+    
+    getDouyinUserVideos(details.url);
+
+  },
+  {
+    urls: [
+        "https://www.douyin.com/aweme/v1/aweme/post/*"
+    ],
+    types: ["xmlhttprequest"]
+  },
+  []
+);
+
+// 监听发送请求 微信EXT
 chrome.webRequest.onBeforeRequest.addListener(
   function(details) {
     //getComments(details.url);

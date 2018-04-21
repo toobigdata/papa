@@ -37,7 +37,7 @@ function crawl(){
 
   var card_desc = '播放量/' + data.play_count + ' 点赞数/' + data.digg_count;
 
-  var jianhuo_url = 'http://jianhuo.toobigdata.com/douyin.php?title=' + encodeURIComponent('你的好友 @' + data.author_name + ' 需要你的爱心 | ' + data.desc) + '&des=' + encodeURIComponent(card_desc) + '&imgurl=' + data.static_cover + '&link=' + encodeURIComponent(data.url);
+  var jianhuo_url = 'http://jianhuo.toobigdata.com/douyin.php?title=' + encodeURIComponent('@' + data.author_name + ' | ' + data.desc) + '&des=' + encodeURIComponent(card_desc) + '&imgurl=' + data.static_cover + '&link=' + encodeURIComponent(location.href);
 
   var html = '<div class="desc">播放数: ' + data.play_count;
   html += '<br>点赞数: ' + data.digg_count;

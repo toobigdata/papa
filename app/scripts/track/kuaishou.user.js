@@ -18,6 +18,16 @@ function crawl(){
   var data = {};
   data.url = location.href.replace(/\?.*/g, '')
   data.title = document.title;
+
+
+  if(!document.querySelector('.description')){
+    data.user_id = location.href.split('/')[4];
+    console.log(data.user_id);
+    var next_id = parseInt(data.user_id) + 1;
+    var next_url = 'http://kuaishou.com/user/' + next_id;
+    location.href = next_url;
+  }
+
   data.user_name = document.title.replace('的快手主页', '');
   if(document.querySelector('.description')){
     data.description = document.querySelector('.description').innerHTML;

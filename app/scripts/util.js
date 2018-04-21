@@ -78,6 +78,45 @@ function getComments(url){
 	});
 }
 
+function getDouyinUserVideos(url){
+  var source = 'douyin.user.video';
+  console.log(source);
+  console.log(url);
+  if(localStorage.douyin_user_post == url){
+    return;
+  } else {
+    localStorage.douyin_user_post = url;
+  }
+
+	$.ajax({
+			url: url,
+      data: {},
+			success: function(d) { 
+        console.log(d);
+        /*
+        json = d.substr(d.indexOf('{'), d.lastIndexOf('}') - d.indexOf('{') + 1);
+        json = JSON.parse(json); 
+        json.url = url;
+        sendtoServer(json, source);
+        console.log('get comments' + url);
+
+        var listData = json;
+
+        var selector = config[source].list.split('.');
+        for(var j=0;j<selector.length;j++){
+          listData = listData[selector[j]];
+        }
+
+        for(var i=0;i<listData.length;i++){
+          listData[i].ts = new Date();
+          appendStorage(source, listData[i]);
+        }
+        */
+      }
+	});
+        /*
+        */
+}
 
 function getWxData(r, type){
 	var meta = {

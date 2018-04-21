@@ -95,7 +95,7 @@ var config = {
     },
     'amazon.sellercentral.message': {
       display_name: '亚马逊商家后台消息',
-      url_re: ['.*sellercentral.amazon..*/messaging/inbox.*'],
+      url_re: ['.*sellercentral.*.amazon..*/messaging/inbox.*'],
       list: 'message_list',
       head: ['采集时间',  '作者', '作者编号', '邮箱', '订单编号'],
       field: ['ts', 'buyer_name', 'buyer_id', 'buyer_email', 'order_id']
@@ -128,7 +128,7 @@ var config = {
     },
     'douyin.video': {
       display_name: '抖音视频',
-      url_re: ['.*www.douyin.com\/share\/video\/.*', '.*www.amemv.com\/share\/video\/.*'],
+      url_re: ['.*www.iesdouyin.com\/share\/video\/.*','.*www.douyin.com\/share\/video\/.*', '.*www.amemv.com\/share\/video\/.*'],
       //list: 'follow_list',
       head: ['采集时间', '作者', '标题', '描述', '播放数', '点赞数', '评论数', '分享数', '视频地址'],
       field: ['ts', 'author_name', 'title', 'desc', 'play_count', 'digg_count', 'comment_count', 'share_count', 'url']

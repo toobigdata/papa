@@ -19,6 +19,18 @@ function crawl(){
   d = JSON.parse(d);
   console.log(d);
 
+  /*
+  if(!d){
+
+    var next_id = parseInt(location.href.split('/')[5]) + 1;
+    var next_url = 'https://www.douyin.com/share/user/' + next_id;
+    if(next_url){
+      location.href = next_url;
+    }
+
+  }
+  */
+
   var data = {};
   data.url = location.href.replace(/\?.*/g, '')
   data.title = document.title;
@@ -37,6 +49,16 @@ function crawl(){
   chrome.runtime.sendMessage({ 'msgtype': 'douyin.user', 'content': data}, function (response) {
     console.log(response);
   });
+
+
+  console.log(data.uid);
+  var next_id = parseInt(data.uid) + 1;
+  var next_url = 'https://www.douyin.com/share/user/' + next_id;
+  if(next_url){
+    setTimeout(function(){
+      //location.href = next_url;
+    }, 1*1000);
+  }
 
 }
 
