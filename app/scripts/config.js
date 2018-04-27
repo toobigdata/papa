@@ -130,8 +130,8 @@ var config = {
       display_name: '抖音视频',
       url_re: ['.*www.iesdouyin.com\/share\/video\/.*','.*www.douyin.com\/share\/video\/.*', '.*www.amemv.com\/share\/video\/.*'],
       //list: 'follow_list',
-      head: ['采集时间', '作者', '标题', '描述', '播放数', '点赞数', '评论数', '分享数', '视频地址'],
-      field: ['ts', 'author_name', 'title', 'desc', 'play_count', 'digg_count', 'comment_count', 'share_count', 'url']
+      head: ['采集时间', '作者',  '描述', '播放数', '点赞数', '评论数', '分享数', '视频地址'],
+      field: ['ts', 'author_name',  'desc', 'play_count', 'digg_count', 'comment_count', 'share_count', 'url']
     },
     'douyin.user': {
       display_name: '抖音用户',
@@ -144,8 +144,8 @@ var config = {
       display_name: '快手视频',
       url_re: ['.*www.kuaishou.com\/photo\/.+\/.+'],
       //list: 'follow_list',
-      head: ['采集时间', '作者', '标题', '视频ID', '视频标题', '播放数', '点赞数', '评论数'],
-      field: ['ts', 'userName', 'title', 'photoId', 'caption', 'viewCount', 'likeCount', 'commentCount']
+      head: ['采集时间', '作者', '视频ID', '视频标题', '播放数', '点赞数', '评论数'],
+      field: ['ts', 'userName', 'photoId', 'caption', 'viewCount', 'likeCount', 'commentCount']
     },
     'kuaishou.user': {
       display_name: '快手用户',

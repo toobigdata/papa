@@ -16,16 +16,45 @@ $(function(){
   });
 
 
-  renderBasic(source);
+
+  var data = getData(source);
+  var body = data.body;
+  var head = data.head;
+	console.log(data);
+
+  var container = document.getElementById('basicData');
+  var hot = new Handsontable(container, {
+    data: body,
+    height: 480,
+    width: 1200,
+		stretchH: 'all',
+		contextMenu: true,
+    rowHeaders: true,
+    colHeaders: head,
+    filters: true,
+    sortIndicator: true,
+    columnSorting: true,
+    rowHeaders: true,
+    dropdownMenu: true,
+		readOnly: true,
+      sortIndicator: true,
+
+		autoColumnSize: {
+			samplingRatio: 23
+		}
+  });
 
 
-  $('table').DataTable({
-    'paging': true,
-    "pageLength": 100,
-    'order': [[ 0, 'desc' ]],
-    'buttons': [
-        'excelHtml5'
-    ]
+
+	var buttons = {
+    file: document.getElementById('export-file')
+  };
+
+  var exportPlugin = hot.getPlugin('exportFile');
+  //var resultTextarea = document.getElementById('result');
+
+  buttons.file.addEventListener('click', function() {
+    exportPlugin.downloadFile('csv', {filename: 'MyFile'});
   });
 
   $('#' + source).addClass('active');
@@ -53,34 +82,39 @@ if (sync === 'true') {
   $('#more').show();
 }
 
-
-function renderBasic(source){
+function getData(source){
   var key = source;
   //console.log(key);
 
-  var table = '<h3>最新爬取数据</h3><table id="basic" style="width:100%"><thead><tr>';
-  for(var i=0;i<config[key]['head'].length;i++){
-    var item = config[key]['head'][i];
-    table += '<td>' + item + '</td>';
-  }
-  table += '</tr></thead><tbody id="basic_body"></tbody></table>';
-  document.getElementById('basicData').innerHTML = table;
-
+  var result = {}
+	result.head = [];
+	result.body = [];
+	result.columns = [];
   var list = getStorage(key);
 
+  var line = [];
+  for(var i=0;i<config[key]['head'].length;i++){
+    var item = config[key]['head'][i];
+		result.head.push(item);
+		result.columns.push({data: item, type: 'text'});
+  }
+
   for(var i=0;i<list.length;i++){
-    var tr = '<tr>';
     var item = list[i];
+    var line = [];
+
+
+    var line = [];
     for(var j=0;j<config[key]['field'].length;j++){
       var field = config[key]['field'][j];
-      if(j===0) tr += '<td>' + toLocalTime(item[field]) + '</td>';
-      else tr += '<td>' + item[field] + '</td>';
+      if(j===0) line.push(toLocalTime(item[field]));
+      else line.push(item[field]);
     }
-    tr += '</tr>';
-    document.getElementById('basic_body').innerHTML += tr;
+    result.body.push(line);
   }
-  //wordFrequency(list, 'text');
+  return result;
 }
+
 
 function wordFrequency(list, field){
 

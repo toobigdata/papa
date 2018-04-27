@@ -5,7 +5,12 @@
     <title>我的数据 - 爬爬</title>
     <link href="styles/main.css" rel="stylesheet">
     <link href="styles/data.css" rel="stylesheet">
-    <link href="styles/jquery.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" media="screen" href="styles/handsontable.full.min.css">
+
+    <script src="scripts/lib/handsontable.full.min.js"></script>
+
+    <!--
+    -->
   </head>
   <body>
     <header>
@@ -23,16 +28,26 @@
       <select id="source">
         <option>切换数据源</option>
       </select>
-      <ul class="right"><a id="clearStorage" href="#">清空此数据源</a></ul>
+      <ul class="right">若加载缓慢请<a id="clearStorage" href="#">清空此页数据</a></ul>
     </div>
     <div id="mydata">
+      <div id="toolbox">
+        <button id="export-file" class="intext-btn">导出</button>
+      </div>
       <div id="basicData" class="data-area"></div>
     </div>
+<div>
+
+</div>
+
 
     <script src="scripts/lib/jquery.js"></script>
     <script src="scripts/util.js"></script>
-    <script src="scripts/lib/jquery.dataTables.min.js"></script>
+
     <script src="scripts/config.js"></script>
     <script src="scripts/data.js"></script>
+
+
+
   </body>
 </html>

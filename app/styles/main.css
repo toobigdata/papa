@@ -289,7 +289,7 @@ header ul li a:visited {
 }
 
 .data-area {
-  padding: 20px;
+//  padding: 20px;
 }
 
 .option-area {
@@ -421,13 +421,6 @@ ul li {
   border-radius: 5px;
 }
 
-a#clearStorage {
-  display: block;
-  padding: 5px;
-  border-radius: 5px;
-  color: #f00;
-  font-weight: bold;
-}
 
 #info {
   position: absolute;
@@ -481,4 +474,16 @@ textarea#url-input {
 .popup-footer .btn {
   background: #fff;
   color: #666;
+}
+
+.handsontable .changeType {
+    background: #eee;
+    border-radius: 2px;
+    border: 1px solid #bbb;
+    color: #bbb;
+    font-size: 9px;
+    line-height: 9px;
+    padding: 2px;
+    margin: 3px 1px 0 5px;
+    float: right;
 }

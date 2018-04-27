@@ -1,28 +1,4 @@
-table {
-  padding: 10px;
-}
 
-table thead {
-  font-weight: bold;
-}
-
-table.dataTable.no-footer {
-  border-bottom: 0 !important;
-}
-
-table.dataTable thead th, table.dataTable thead td {
-  border-bottom: 1px solid #a2aec7 !important;
-}
-
-tr {
-  height: 2em;
-}
-
-td.url {
-  max-width: 20px;
-  overflow: hidden;
-  white-space:nowrap;
-}
 
 
 #log {
@@ -31,4 +7,28 @@ td.url {
 
 #basicData, #detailData {
   margin: 5px 25px;
+  width: 100%;
+}
+
+#mydata {
+}
+
+#hot-display-license-info {
+  display: none;
+}
+
+#toolbox {
+  padding: 20px 35px 10px 25px;
+}  
+
+button#export-file {
+  padding: 5px;
+}
+
+
+a#clearStorage {
+  padding: 5px 0;
+  color: #f00;
+  font-weight: bold;
+  text-decoration: underline;
 }
