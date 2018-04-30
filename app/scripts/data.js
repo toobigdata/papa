@@ -37,7 +37,7 @@ $(function(){
     rowHeaders: true,
     dropdownMenu: true,
 		readOnly: true,
-      sortIndicator: true,
+    sortIndicator: true,
 
 		autoColumnSize: {
 			samplingRatio: 23
@@ -54,7 +54,15 @@ $(function(){
   //var resultTextarea = document.getElementById('result');
 
   buttons.file.addEventListener('click', function() {
-    exportPlugin.downloadFile('csv', {filename: 'MyFile'});
+    exportPlugin.downloadFile('csv', {
+      filename: 'TooBigData-' + source + '.csv',
+			//exportHiddenRows: true,     // default false
+			//exportHiddenColumns: true,  // default false
+			columnHeaders: true,        // default false
+			//rowHeaders: true,           // default false
+			//columnDelimiter: ';',       // default ','
+			//range: [1, 1, 6, 6]         // [startRow, endRow, startColumn, endColumn]
+    });
   });
 
   $('#' + source).addClass('active');

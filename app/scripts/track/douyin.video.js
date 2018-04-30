@@ -29,8 +29,10 @@ function crawl(){
   data.comment_count = d.statistics.comment_count;
   data.digg_count = d.statistics.digg_count;
   data.share_count = d.statistics.share_count;
-  data.video_url = d.video.real_play_addr;
+  data.video_id = d.video.play_addr.uri;
+  data.video_url = 'https://aweme.snssdk.com/aweme/v1/play/?video_id=' + data.video_id;
   data.static_cover = d.video.cover.url_list[0];
+
   data.raw = d;
 
   console.log(data);
@@ -43,7 +45,7 @@ function crawl(){
   html += '<br>点赞数: ' + data.digg_count;
   html += '<br>评论数: ' + data.comment_count;
   html += '<br>分享数: ' + data.share_count;
-  html += '<br><a href="' + data.video_url + '">视频地址</a><br> ';
+  html += '<br><a style="display: block; margin:15px 0; padding: 5px; background: #fff;" href="' + data.video_url + '">无水印视频地址</a><br> ';
   html += '<br><a href="' + jianhuo_url + '">生成分享卡</a><br> ';
   html += '<br><br>--由<a href="http://app.toobigdata.com/">爬爬</a>提供数据<br> ';
   html += '</div>';

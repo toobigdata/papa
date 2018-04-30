@@ -70,23 +70,18 @@ function crawl(){
   var data = {};
   data.url = location.href.replace(/\?.*/g, '')
   data.title = document.title;
-  /*
-  data.uid = d.uid;
-  data.nickname = d.nickname;
-  data.follower_count = d.follower_count;
-  data.total_favorited = d.total_favorited;
-  data.aweme_count = d.aweme_count;
-  data.signature = d.signature;
-  data.short_id = d.short_id;
-  data.raw = d;
-
+  data.avatar = document.querySelector('.personal-card .author img.avatar').src;
+  data.nickname = document.querySelector('.nickname').innerText;
+  data.signature = document.querySelector('.signature').innerText;
+  data.location = document.querySelector('.location').innerText;
+  data.constellation = document.querySelector('.constellation').innerText;
+  data.personal_card_html = document.querySelector('.personal-card').innerHTML;
+  data.video_tab_html = document.querySelector('.video-tab').innerHTML;
   console.log(data);
-
 
   chrome.runtime.sendMessage({ 'msgtype': 'douyin.user', 'content': data}, function (response) {
     console.log(response);
   });
-  */
 
 
   /*
