@@ -50,3 +50,7 @@
 .notie-textbox-inner {
   font-size: 20px;
 }
+
+.notie-textbox-inner a {
+  color: red;
+}

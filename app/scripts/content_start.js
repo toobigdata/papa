@@ -3,8 +3,8 @@
 })(window, document);
 
 
-function notify(text){
-  notie.alert({ text: text, time: 5});
+function notify(text, time=3){
+  notie.alert({ text: text, time: time});
 }
 
 function addBtn(id, text, func){

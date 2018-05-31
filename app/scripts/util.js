@@ -309,7 +309,7 @@ function appendStorage(key, data){
     delete data.photos;
   }
   list.push(data);
-  console.log(list);
+  //console.log(list);
   localStorage[key] = JSON.stringify(list);
 
   //return localStorage[key];

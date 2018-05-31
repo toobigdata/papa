@@ -1,7 +1,7 @@
 {
   "name": "爬爬-TooBigData",
   "short_name": "Papa",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "manifest_version": 2,
   "description": "所见即所得的数据爬虫，每个人的数据助手",
   "icons": {

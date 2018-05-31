@@ -140,6 +140,12 @@ var config = {
       head: ['采集时间', '作者', '抖音号', '粉丝数', '获赞数', '视频数'],
       field: ['ts', 'nickname', 'short_id', 'follower_count', 'total_favorited', 'aweme_count' ]
     },
+    'douyin.user.like': {
+      display_name: '抖音用户喜欢的视频',
+      list: 'aweme_list',
+      head: ['采集时间', '作者',  '描述', '播放数', '点赞数', '评论数', '分享数', '视频地址', '无水印地址'],
+      field: ['ts', 'author_name',  'desc', 'play_count', 'digg_count', 'comment_count', 'share_count', 'url', 'real_url']
+    },
     'kuaishou.video': {
       display_name: '快手视频',
       url_re: ['.*www.kuaishou.com\/photo\/.+\/.+'],

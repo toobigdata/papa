@@ -111,12 +111,16 @@ function getData(source){
     var item = list[i];
     var line = [];
 
-
-    var line = [];
     for(var j=0;j<config[key]['field'].length;j++){
       var field = config[key]['field'][j];
       if(j===0) line.push(toLocalTime(item[field]));
-      else line.push(item[field]);
+      else {
+        if(field.indexOf('.') > 0){
+          console.log(item[field.split('.')[0]]);
+        } else {
+          line.push(item[field]);
+        }
+      }
     }
     result.body.push(line);
   }

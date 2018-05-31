@@ -2,21 +2,33 @@
 (function() {
   'use strict';
   // Your code here...
-  console.log('douyin'); 
 	crawl();
 
-  addBtn('autoreload', '当页爬', function(){
-    minuteReload();
-  });
 
 })();
 
 function crawl(){
 
+  var aweme_id = location.href.split('/')[5];
+  //console.log(aweme_id);
+  var url = 'https://kolranking.com/douyin/videos/' + aweme_id;
+  notify('由于抖音改版，本页数据无法完整采集，请 <a href="' + url + '">登录网站</a> 查看最新数据', 20);
+  var data = {};
+  data.aweme_id = aweme_id;
+
+  chrome.runtime.sendMessage({ 'msgtype': 'douyin.video.aweme_id', 'content': data}, function (response) {
+    console.log(response);
+  });
+
+}
+
+/******************************************************************************
+ * 已废弃
+ *****************************************************************************/
+function fuck(){
   var d = getVar('data');
   d = JSON.parse(d);
   console.log(d);
-
   var data = {};
   data.url = location.href.replace(/\?.*/g, '')
   data.title = document.title;
@@ -51,13 +63,7 @@ function crawl(){
   html += '</div>';
 
   document.querySelector('.video-info').innerHTML += html;
-
-  chrome.runtime.sendMessage({ 'msgtype': 'douyin.video', 'content': data}, function (response) {
-    console.log(response);
-  });
-
 }
-
 
 /******************************************************************************
  * 从当前页面内容中提取变量
