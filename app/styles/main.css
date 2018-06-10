@@ -289,7 +289,7 @@ header ul li a:visited {
 }
 
 .data-area {
-//  padding: 20px;
+  margin: 10px 20px;
 }
 
 .option-area {
@@ -452,6 +452,7 @@ ul li {
 textarea#url-input {
   width: 100%;
   height: 20em;
+  padding: 5px;
 }
 
 #source-name {

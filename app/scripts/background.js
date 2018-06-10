@@ -181,6 +181,13 @@ function closeTabs(){
     });
     chrome.tabs.remove(tabIds);
   });
+  chrome.tabs.query({ 'status': 'complete', 'url': '*://www.douyin.com/*' }, function (tabs) {
+    console.log(tabs);
+    var tabIds = $.map(tabs, function (value, index) {
+      return tabs[index].id;
+    });
+    chrome.tabs.remove(tabIds);
+  });
 }
 
 function clearStorage() {

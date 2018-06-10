@@ -1,4 +1,6 @@
 $(function(){
+  init();
+
   var wait = 5;
   document.getElementById('input_wait').value = wait;
   document.getElementById('input_wait_show').innerText = wait;
