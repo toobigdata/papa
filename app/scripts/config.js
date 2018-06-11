@@ -166,8 +166,8 @@ var config = {
       url_re: ['.*www.douyin.com\/share\/user\/.*', '.*www.amemv.com\/share\/user\/.*'],
       url_demo: 'https://www.douyin.com/share/user/80812090202',
       //list: 'follow_list',
-      head: ['采集时间', '作者', '抖音号', '粉丝数', '获赞数', '视频数'],
-      field: ['ts', 'nickname', 'short_id', 'follower_count', 'total_favorited', 'aweme_count' ]
+      head: ['采集时间', '作者', '抖音号', '粉丝数', '获赞数', '视频数', '喜欢数'],
+      field: ['ts', 'nickname', 'short_id', 'follower_count', 'total_favorited', 'aweme_count', 'like_count' ]
     },
     'douyin.user.like': {
       display_name: '抖音用户喜欢的视频',

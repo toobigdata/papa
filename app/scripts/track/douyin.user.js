@@ -13,38 +13,6 @@
 
 })();
 
-var dict = {
-  '&#xe602;':  1,
-  '&#xe603;':  0,
-  '&#xe604;':  3,
-  '&#xe605;':  2,
-  '&#xe606;':  4,
-  '&#xe607;':  5,
-  '&#xe608;':  6,
-  '&#xe609;':  9,
-  '&#xe60a;':  7,
-  '&#xe60b;':  8,
-  '&#xe60c;':  4,
-  '&#xe60d;':  0,
-  '&#xe60e;':  1,
-  '&#xe60f;':  5,
-  '&#xe610;':  2,
-  '&#xe611;':  3,
-  '&#xe612;':  6,
-  '&#xe613;':  7,
-  '&#xe614;':  8,
-  '&#xe615;':  9,
-  '&#xe616;':  0,
-  '&#xe617;':  2,
-  '&#xe618;':  1,
-  '&#xe619;':  4,
-  '&#xe61a;':  3,
-  '&#xe61b;':  5,
-  '&#xe61c;':  7,
-  '&#xe61d;':  8,
-  '&#xe61e;':  9,
-  '&#xe61f;':  6
-}
 
 function crawl(){
 
@@ -78,8 +46,19 @@ function crawl(){
   data.signature = document.querySelector('.signature').innerText;
   data.location = document.querySelector('.location').innerText;
   data.constellation = document.querySelector('.constellation').innerText;
-  data.personal_card_html = document.querySelector('.personal-card').innerHTML;
-  data.video_tab_html = document.querySelector('.video-tab').innerHTML;
+  data.aweme_count = getRealNum(document.querySelector('.user-tab .num').innerText);
+  data.like_count = getRealNum(document.querySelector('.like-tab .num').innerText);
+	var short_id_raw = document.querySelector('.shortid').innerText;
+	data.short_id = getRealNum(short_id_raw);
+	var following_count = document.querySelector('.focus .num').innerText;
+	data.following_count = getRealNum(following_count);
+	var follower_count = document.querySelector('.follower .num').innerText;
+	data.follower_count = getRealNum(follower_count);
+	var total_favorited = document.querySelector('.liked-num .num').innerText;
+	data.total_favorited = getRealNum(total_favorited);
+	console.log(data);
+
+
   //console.log(data);
 
   chrome.runtime.sendMessage({ 'msgtype': 'douyin.user', 'content': data}, function (response) {
@@ -149,4 +128,56 @@ function getDouyinUserLikeVideos(uid){
 
       }
 	});
+}
+
+
+function getRealNum(string){
+
+	console.log('get real number');
+	if(string.indexOf('抖音ID') >= 0) string = string.replace('抖音ID：', '');
+	if(string.indexOf('关注') >= 0) string = string.replace('关注', '');
+	if(string.indexOf('粉丝') >= 0) string = string.replace('粉丝', '');
+	if(string.indexOf('赞') >= 0) string = string.replace('赞', '');
+	string = string.replace(/\s/g, '');
+	console.log(string);
+	var list = ['','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''];
+	var dict = {
+			'':  1,
+			'':  0,
+			'':  3,
+			'':  2,
+			'':  4,
+			'':  5,
+			'':  6,
+			'':  9,
+			'':  7,
+			'':  8,
+			'':  4,
+			'':  0,
+			'':  1,
+			'':  5,
+			'':  2,
+			'':  3,
+			'':  6,
+			'':  7,
+			'':  8,
+			'':  9,
+			'':  0,
+			'':  2,
+			'':  1,
+			'':  4,
+			'':  3,
+			'':  5,
+			'':  7,
+			'':  8,
+			'':  9,
+			'':  6,
+	};
+	console.log(string);
+	var result = '';
+	for(var i=0;i<string.length;i++){
+		if(list.includes(string[i])) result += dict[string[i]];
+		else result += string[i];
+	}
+	return result;
 }

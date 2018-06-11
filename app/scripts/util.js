@@ -321,5 +321,7 @@ function init(){
   document.querySelector('.menu').innerHTML = ' <li><a href="/mydata.html">我的数据</a></li> '
     + '<li><a href="/help.html">使用说明</a></li>'
     + '<li><a href="/urlviewer.html">任务队列</a></li>';
-
 }
+
+
+

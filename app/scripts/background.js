@@ -160,6 +160,7 @@ function updateSettings(){
 }
 
 function closeTabs(){
+  console.log('--------------------close tabs-----------------');
   chrome.tabs.query({ 'status': 'complete', 'url': '*://kuaishou.com/*' }, function (tabs) {
     //console.log(tabs);
     var tabIds = $.map(tabs, function (value, index) {
