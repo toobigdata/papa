@@ -1,4 +1,12 @@
 var config = {
+    'demo.fifa.player': {
+      display_name: '世界杯球员',
+      url_re: ['.*fifa.com\/worldcup\/players\/browser\/'],
+      url_demo: 'https://www.fifa.com/worldcup/players/browser/',
+      list: 'list',
+      head: ['采集时间', '球员名字', '国家', '位置', '号码', '照片', '网址'],
+      field: ['ts', 'name', 'country', 'role', 'number', 'avatar', 'url']
+    },
     'wechat.article.content': {
       display_name: '微信文章',
       url_re: ['.*mp.weixin.qq.com\/[s|mp\/]+.*'],
