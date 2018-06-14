@@ -45,7 +45,9 @@ function sendtoServer(data, source) {
        //   'value': 1
        // }
 			}),
-			success: function(d) { console.log(d); },
+			success: function(d) { 
+        //console.log(d); 
+      },
 			contentType: 'application/json',
 			dataType: 'json'
 	});
@@ -106,19 +108,19 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
 
     // 暂不保存
 
-    console.log(config[source]);
+    //console.log(config[source]);
 
     if(data == undefined) return;
 
-    console.log('config[source].list');
-    console.log(config[source]);
+    //console.log('config[source].list');
+    //console.log(config[source]);
 
     if(config[source].list){
-      console.log('list');
+      //console.log('list');
       data = data[config[source].list];
-      console.log(data);
+      //console.log(data);
       for(var i=0;i<data.length;i++){
-        console.log(data[i]);
+        //console.log(data[i]);
         data[i].ts = stat_ts;
         appendStorage(source, data[i]);
       }
@@ -176,14 +178,14 @@ function closeTabs(){
     chrome.tabs.remove(tabIds);
   });
   chrome.tabs.query({ 'status': 'complete', 'url': '*://www.kickstarter.com/profile/*' }, function (tabs) {
-    console.log(tabs);
+    //console.log(tabs);
     var tabIds = $.map(tabs, function (value, index) {
       return tabs[index].id;
     });
     chrome.tabs.remove(tabIds);
   });
   chrome.tabs.query({ 'status': 'complete', 'url': '*://www.douyin.com/*' }, function (tabs) {
-    console.log(tabs);
+    //console.log(tabs);
     var tabIds = $.map(tabs, function (value, index) {
       return tabs[index].id;
     });
@@ -194,7 +196,7 @@ function closeTabs(){
 function clearStorage() {
   chrome.storage.local.clear(function () {
     //do something
-    console.log('local storage clear');
+    //console.log('local storage clear');
   });
 }
 
@@ -213,7 +215,7 @@ function getSource(url) {
 chrome.webRequest.onBeforeRequest.addListener(
   function(details) {
     getComments(details.url);
-    console.log(details.url);
+    //console.log(details.url);
     return {redirectUrl: chrome.extension.getURL("returnjs.js")};
   },
   {

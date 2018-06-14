@@ -3,9 +3,6 @@
 })(window, document);
 
 
-function notify(text, time=3){
-  notie.alert({ text: text, time: time});
-}
 
 function addBtn(id, text, func){
   var btn = document.createElement('div');
@@ -46,14 +43,6 @@ function run(){
       setTimeout(function(){
         var sidebar = document.createElement('div');
         if(location.href.indexOf('detail.tmall.com') > 0){
-          /*
-          sidebar.id = 'jianzhi_sidebar';
-          sidebar.innerHTML = '<a class="btn" href="#" id="minuteReload" title=""> 自动翻页 </a>';
-          document.body.appendChild(sidebar);
-          $('#minuteReload').click(function(){
-            tmallCommentNextPage();
-          });
-          */
         }
       }, 3*1000);
     }
@@ -78,4 +67,8 @@ function tmallCommentNextPage(){
     var btn = document.querySelector('.rate-paginator a:nth-last-child(1)');
     if(btn) btn.click()
   }, 3*1000);
+}
+
+function notify(text, time=3){
+  notie.alert({ text: text, time: time});
 }

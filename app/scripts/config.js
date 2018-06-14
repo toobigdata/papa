@@ -46,8 +46,8 @@ var config = {
       url_re: ['.*search.jd.com\/Search.+'],
       url_demo: 'https://search.jd.com/Search?keyword=ticwatch&enc=utf-8&wq=ticwatch',
       list: 'product_list',
-      head: ['采集时间', '商品名', '价格', '评论数', '店铺', '关键词', '页码', '排名'],
-      field: ['ts', 'name', 'price', 'commentCount', 'shop', 'keyword', 'page', 'rank']
+      head: ['采集时间', '商品名', '价格', '评论数', '店铺', '关键词', '页码', '排名', 'URL'],
+      field: ['ts', 'name', 'price', 'commentCount', 'shop', 'keyword', 'page', 'rank', 'url']
     },
     'jd.product': {
       display_name: '京东商品',
@@ -153,13 +153,13 @@ var config = {
       head: ['采集时间', 'fromID', '关系', 'toID', '昵称', '性别', '关注数', '粉丝数', '微博数', '地址', '简介'],
       field: ['ts', 'oid', 'relation', 'uid', 'nickname', 'gender', 'follow_num', 'fan_num', 'status_num', 'address', 'intro']
     },
-    'douyin.video': {
-      display_name: '抖音视频',
-      url_re: ['.*www.iesdouyin.com\/share\/video\/.*','.*www.douyin.com\/share\/video\/.*', '.*www.amemv.com\/share\/video\/.*'],
-      url_demo: 'https://www.douyin.com/share/video/6517911823285488904/',
-      //list: 'follow_list',
-      head: ['采集时间', '作者',  '描述', '播放数', '点赞数', '评论数', '分享数', '视频地址'],
-      field: ['ts', 'author_name',  'desc', 'play_count', 'digg_count', 'comment_count', 'share_count', 'url']
+    'weibo.search.weibo': {
+      display_name: '微博搜索-综合',
+      url_re: ['.*s.weibo.com\/weibo\/.*'],
+      url_demo: 'http://s.weibo.com/weibo/%25E4%25B8%2596%25E7%2595%258C%25E6%259D%25AF',
+      list: 'feed_list',
+      head: ['采集时间', '关键词', '昵称', '认证类型', '转发数', '评论数', '点赞数', '微博文字'],
+      field: ['ts', 'search_keyword', 'nickname', 'user_verify', 'forward_count', 'comment_count', 'like_count', 'content_text']
     },
     'douyin.user': {
       display_name: '抖音用户',
@@ -168,6 +168,21 @@ var config = {
       //list: 'follow_list',
       head: ['采集时间', '作者', '抖音号', '粉丝数', '获赞数', '视频数', '喜欢数'],
       field: ['ts', 'nickname', 'short_id', 'follower_count', 'total_favorited', 'aweme_count', 'like_count' ]
+    },
+    'douyin.video': {
+      display_name: '抖音视频',
+      url_re: ['.*www.iesdouyin.com\/share\/video\/.*','.*www.douyin.com\/share\/video\/.*', '.*www.amemv.com\/share\/video\/.*'],
+      url_demo: 'https://www.douyin.com/share/video/6517911823285488904/',
+      //list: 'follow_list',
+      head: ['采集时间', '作者',  '描述', '播放数', '点赞数', '评论数', '分享数', '视频地址'],
+      field: ['ts', 'author_name',  'desc', 'play_count', 'digg_count', 'comment_count', 'share_count', 'url']
+    },
+    'douyin.user.video': {
+      display_name: '抖音用户发布的视频',
+      url_demo: 'https://www.douyin.com/share/user/80812090202',
+      list: 'aweme_list',
+      head: ['采集时间', '作者',  '描述', '播放数', '点赞数', '评论数', '分享数', '视频地址', '无水印地址'],
+      field: ['ts', 'author.nickname', 'desc', 'statistics.play_count', 'statistics.digg_count', 'statistics.comment_count', 'statistics.share_count', 'url', 'real_url']
     },
     'douyin.user.like': {
       display_name: '抖音用户喜欢的视频',

@@ -92,7 +92,7 @@ if (sync === 'true') {
 
 function getData(source){
   var key = source;
-  //console.log(key);
+  console.log(key);
 
   var result = {}
 	result.head = [];
@@ -107,6 +107,8 @@ function getData(source){
 		result.columns.push({data: item, type: 'text'});
   }
 
+  console.log(result.head);
+
   for(var i=0;i<list.length;i++){
     var item = list[i];
     var line = [];
@@ -116,7 +118,7 @@ function getData(source){
       if(j===0) line.push(toLocalTime(item[field]));
       else {
         if(field.indexOf('.') > 0){
-          console.log(item[field.split('.')[0]]);
+          line.push(item[field.split('.')[0]][field.split('.')[1]]);
         } else {
           line.push(item[field]);
         }

@@ -61,7 +61,7 @@ function getComments(url){
         json = JSON.parse(json); 
         json.url = url;
         sendtoServer(json, source);
-        console.log('get comments' + url);
+        //console.log('get comments' + url);
 
         var listData = json;
 
@@ -92,30 +92,28 @@ function getDouyinUserVideos(url){
 			url: url,
       data: {},
 			success: function(d) { 
-        console.log(d);
+        //console.log(d);
 
         json = d; 
         json.url = url;
         sendtoServer(json, source);
 
-        /*
         var listData = json;
 
-        console.log(listData);
+        //console.log(listData);
 
         var selector = config[source].list.split('.');
         for(var j=0;j<selector.length;j++){
           listData = listData[selector[j]];
         }
 
-        console.log('listData2');
-        console.log(listData);
-
         for(var i=0;i<listData.length;i++){
           listData[i].ts = new Date();
+          listData[i].url = 'https://www.douyin.com/share/video/' + listData[i].statistics.aweme_id;
+          listData[i].real_url = 'https://aweme.snssdk.com/aweme/v1/play/?video_id=' + listData[i].video.play_addr.uri;
+          //console.log(listData[i]);
           appendStorage(source, listData[i]);
         }
-        */
       }
 	});
 }
@@ -151,7 +149,7 @@ function getWxData(r, type){
           },
           contentType: false,
           success: function(d) { 
-            console.log(d);
+            //console.log(d);
             var json = {};
             json.ext_data = d;
             json.meta_data = meta;
@@ -171,7 +169,7 @@ function getAmazonSellerMessageData(r){
         data: r.requestBody,
         //contentType: false,
         success: function(d) { 
-            console.log(d);
+            //console.log(d);
             var parser = new DOMParser();
             d = parser.parseFromString(d, "text/xml");
 
@@ -179,7 +177,7 @@ function getAmazonSellerMessageData(r){
             data.url = location.href;
 
             var scriptList = Array.from(d.querySelectorAll('script'));
-            console.log(scriptList);
+            //console.log(scriptList);
 
             data.message_list = scriptList.map(function(d){
               
@@ -204,7 +202,7 @@ function getAmazonSellerMessageData(r){
 
             data.message_list = data.message_list.filter(n=>n);
 
-            console.log(data);
+            //console.log(data);
             sendtoServer(data, 'amazon.sellercentral.message');
           /*
             var json = {};
@@ -236,7 +234,9 @@ function sendtoServer(data, source) {
 				'event_date': today,
 				'version': crxVersion
 			}),
-			success: function(d) { console.log(d); },
+			success: function(d) { 
+        //console.log(d); 
+      },
 			contentType: 'application/json',
 			dataType: 'json'
 	});
@@ -277,7 +277,7 @@ function clearStorage() {
 }
 
 function getSource(url) {
-  console.log(url);
+  //console.log(url);
   for(var i in config){
     for(var j=0;j<config[i]['url_re'].length;j++){
       var re = new RegExp(config[i]['url_re'][j], 'i');
@@ -289,7 +289,7 @@ function getSource(url) {
 }
 
 function showSidebar(){
-  console.log('show');
+  //console.log('show');
 }
 
 function getStorage(key){
@@ -298,9 +298,9 @@ function getStorage(key){
 
 function appendStorage(key, data){
   if(localStorage.papa_local == 'false') return;
-  console.log(key);
-  console.log(data);
-  console.log(getStorage(key));
+  //console.log(key);
+  //console.log(data);
+  //console.log(getStorage(key));
   var list = getStorage(key);
   if(data.raw){ //删除原始数据
     delete data.raw;
@@ -310,7 +310,15 @@ function appendStorage(key, data){
   }
   list.push(data);
   //console.log(list);
-  localStorage[key] = JSON.stringify(list);
+  try {
+    localStorage[key] = JSON.stringify(list);
+  } catch(e) {
+  if (isQuotaExceeded(e)) {
+    //notify('浏览器本地存储已满，本次爬取的数据没有保存，请清空存储后再试', 60);
+    console.log('浏览器本地存储已满，本次爬取的数据没有保存，请清空存储后再试');
+  }
+}
+
 
   //return localStorage[key];
 }
@@ -324,4 +332,26 @@ function init(){
 }
 
 
+function isQuotaExceeded(e) {
+  var quotaExceeded = false;
+  if (e) {
+    if (e.code) {
+      switch (e.code) {
+        case 22:
+          quotaExceeded = true;
+          break;
+        case 1014:
+          // Firefox
+          if (e.name === 'NS_ERROR_DOM_QUOTA_REACHED') {
+            quotaExceeded = true;
+          }
+          break;
+      }
+    } else if (e.number === -2147024882) {
+      // Internet Explorer 8
+      quotaExceeded = true;
+    }
+  }
+  return quotaExceeded;
+}
 

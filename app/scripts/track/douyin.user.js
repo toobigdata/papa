@@ -43,6 +43,7 @@ function crawl(){
   data.uid = uid;
   data.avatar = document.querySelector('.personal-card .author img.avatar').src;
   data.nickname = document.querySelector('.nickname').innerText;
+  if(document.querySelector('.verify-info')) data.verify_info = document.querySelector('.verify-info').innerText;
   data.signature = document.querySelector('.signature').innerText;
   data.location = document.querySelector('.location').innerText;
   data.constellation = document.querySelector('.constellation').innerText;

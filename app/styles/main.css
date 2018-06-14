@@ -451,6 +451,7 @@ ul li {
 
 textarea#url-input {
   width: 100%;
+  margin: 25px 0;
   height: 20em;
   padding: 5px;
 }

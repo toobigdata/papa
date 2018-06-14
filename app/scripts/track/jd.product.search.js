@@ -31,6 +31,7 @@ function crawl(){
           'commentCount': d.querySelector('.p-commit a').innerText,
           'shop': d.querySelector('.p-shop').innerText,
           'image': d.querySelector('.p-img img').src,
+          'url': d.querySelector('.p-img a').href,
       };
     }
   });
