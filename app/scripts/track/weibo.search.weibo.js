@@ -11,6 +11,10 @@
     crawlNextPage();
   });
 
+  addBtn('autoreload', '当页爬', function(){
+    minuteReload();
+  });
+
   addBtn('help', '文档', function(){
     location.href = 'http://toobigdata.com/papa-help-weibo-user/';
   });
@@ -59,9 +63,11 @@ function crawl(){
     console.log(response);
   });
 
+  /*
   setTimeout(function(){
     crawlNextPage();
   }, 1*1000);
+  */
 
 }
 
