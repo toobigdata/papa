@@ -111,12 +111,15 @@ function getDouyinUserLikeVideos(uid){
 
         for(var i=0;i<d.aweme_list.length;i++){
           var item = {};
+          item.uid = uid;
           item.desc = d.aweme_list[i].desc;
           item.play_count = d.aweme_list[i].statistics.play_count;
           item.digg_count = d.aweme_list[i].statistics.digg_count;
           item.comment_count = d.aweme_list[i].statistics.comment_count;
           item.share_count = d.aweme_list[i].statistics.share_count;
           item.author_name = d.aweme_list[i].author.nickname;
+          item.author_short_id = d.aweme_list[i].author.short_id;
+          item.aweme_id = d.aweme_list[i].statistics.aweme_id;
           item.url = 'https://www.douyin.com/share/video/' + d.aweme_list[i].statistics.aweme_id;
           item.real_url = 'https://aweme.snssdk.com/aweme/v1/play/?video_id=' + d.aweme_list[i].video.play_addr.uri;
           result.aweme_list.push(item);
