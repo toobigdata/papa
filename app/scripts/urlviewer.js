@@ -17,7 +17,26 @@ $(function(){
     getData(crawlQueue, wait);
   });
 
+  $('#getTask').click(function(){
+    getTask();
+  });
+
 });
+
+
+function getTask(){
+  var url = 'https://kolranking.com/papa-task/task.txt';
+
+	$.ajax({
+			url: url,
+      data: {},
+			success: function(d) { 
+        console.log(d);
+        document.querySelector('#url-input').value = d;
+      }
+	});
+}
+
 
 function getData(crawlQueue, wait){
     var intervalId = setInterval(function(){
